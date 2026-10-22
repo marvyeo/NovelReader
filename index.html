@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10151B">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<title>NovelReader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: library -> series -> volume/character. One reading column, sticky header with the spoiler gate. */
+:root{
+  --bg:#F6F4F2; --surface:#FFFFFF; --sunk:#EFECE8; --ink:#1D2129; --muted:#5E6673; --faint:#8C93A0; --line:#E2DED9;
+  --accent:#C9483F; --accent-soft:#F7E3E0; --gold:#9A6B12; --ok:#2E7D62; --lost:#9B3B34;
+  --f-display:"Literata", Georgia, "Times New Roman", serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11151B; --surface:#181D25; --sunk:#0D1015; --ink:#E7EAEE; --muted:#9AA3AF; --faint:#6B7480; --line:#272E38;
+  --accent:#F07167; --accent-soft:#3A2224; --gold:#E2B653; --ok:#5CC6A0; --lost:#F08C84; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#11151B; --surface:#181D25; --sunk:#0D1015; --ink:#E7EAEE; --muted:#9AA3AF; --faint:#6B7480; --line:#272E38;
+  --accent:#F07167; --accent-soft:#3A2224; --gold:#E2B653; --ok:#5CC6A0; --lost:#F08C84; color-scheme:dark }
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15.5px/1.6 var(--f-body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.wrap{max-width:860px;margin:0 auto;padding-block:14px 80px}
+.crumbs{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);min-height:28px;flex-wrap:wrap}
+.crumbs button{background:none;border:none;padding:2px 0;color:var(--accent);font-weight:500}
+.crumbs .sep{color:var(--faint)}
+.eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font:700 clamp(28px,6vw,42px)/1.12 var(--f-display);margin:6px 0 4px;text-wrap:balance;letter-spacing:-.01em}
+h2{font:600 21px/1.25 var(--f-display);margin:26px 0 10px;text-wrap:balance}
+h3{font:600 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px}
+.sub{color:var(--muted);font-size:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;font-weight:600;font-size:14px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:focus-visible,.tab:focus-visible,.chip:focus-visible,.shelf button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* gate */
+.gate{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:16px calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0;padding:10px max(16px,env(safe-area-inset-left,0px)) 10px;border-bottom:1px solid var(--line)}
+.gate-inner{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
+.gate label{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13.5px;color:var(--muted)}
+.gate label b{color:var(--ink);font-weight:600}
+.gate .val{font:500 13px var(--f-mono);color:var(--accent);white-space:nowrap}
+input[type=range]{width:100%;accent-color:var(--accent);height:22px;margin:0}
+.tabs{display:flex;gap:4px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:none;background:none;padding:7px 12px;border-radius:999px;color:var(--muted);font:600 14px var(--f-body);white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+/* library */
+.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px;margin-top:16px}
+.scard{display:grid;grid-template-columns:84px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:left;min-width:0}
+.scard .t{font:600 18px/1.25 var(--f-display)}
+.meter{height:6px;border-radius:4px;background:var(--sunk);overflow:hidden;margin:8px 0 4px}
+.meter i{display:block;height:100%;background:var(--accent)}
+.cover{aspect-ratio:480/680;width:100%;border-radius:6px;background:var(--sunk);object-fit:cover;display:block;max-width:100%}
+.ph{aspect-ratio:480/680;width:100%;border-radius:6px;display:flex;flex-direction:column;justify-content:space-between;padding:8px;background:linear-gradient(160deg,var(--sunk),var(--surface));border:1px solid var(--line);color:var(--muted);font:600 12px/1.2 var(--f-display);overflow:hidden}
+.ph .n{font:500 22px/1 var(--f-mono);color:var(--faint)}
+/* series */
+.hero{display:grid;grid-template-columns:min(140px,32vw) 1fr;gap:18px;align-items:start;margin-top:8px}
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.stats b{display:block;font:600 20px/1.2 var(--f-display);color:var(--ink)}
+.get{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pill{font:500 12.5px/1 var(--f-body);border-radius:999px;padding:6px 10px;border:1px dashed var(--accent);color:var(--accent);background:var(--accent-soft)}
+.pill.jp{border-color:var(--line);color:var(--muted);background:var(--sunk)}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:12px;margin-top:12px}
+.shelf button{background:none;border:none;padding:0;text-align:left;display:flex;flex-direction:column;gap:5px;min-width:0}
+.shelf .cap{font-size:11.5px;line-height:1.3;color:var(--muted)}
+.shelf .cap b{color:var(--ink);font-weight:600}
+.shelf .missing .ph{border-style:dashed;background:none}
+.shelf .unread img,.shelf .unread .ph{opacity:.55}
+.tag{font:600 10px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.tag.ok{color:var(--ok)} .tag.own{color:var(--faint)} .tag.miss{color:var(--accent)}
+/* shared content */
+.recap{font:400 17px/1.7 var(--f-display);max-width:65ch}
+.recap p{margin:0 0 12px}
+.locked{border:1px dashed var(--line);border-radius:12px;padding:14px 16px;color:var(--muted);font-size:14px;margin-top:14px}
+details.chap{border-bottom:1px solid var(--line)}
+details.chap summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:baseline;padding:12px 2px}
+details.chap summary::-webkit-details-marker{display:none}
+.num{font:500 13px var(--f-mono);color:var(--accent)}
+.ctitle{font:600 16.5px/1.35 var(--f-display)}
+.cwhere{font-size:12.5px;color:var(--faint);white-space:nowrap}
+.cbody{padding:0 2px 16px 54px;max-width:calc(65ch + 54px)}
+.cbody p{margin:0 0 8px}
+.cbody ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px}
+.search{margin-top:14px;width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:5px 12px;font:500 13px var(--f-body)}
+.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:12px;margin-top:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.pcard{display:grid;grid-template-columns:64px 1fr;gap:12px;text-align:left;width:100%}
+.portrait{width:64px;height:84px;border-radius:8px;object-fit:cover;background:var(--sunk);display:flex;align-items:center;justify-content:center;font:600 24px var(--f-display);color:var(--faint);overflow:hidden}
+.name{font:600 18px/1.25 var(--f-display)}
+.aka{font-size:13px;color:var(--muted)}
+.status{align-self:flex-start;font:600 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:6px;border:1px solid currentColor}
+.status.alive{color:var(--ok)} .status.dead{color:var(--lost)} .status.unknown{color:var(--gold)}
+.facts{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.facts li{display:grid;grid-template-columns:68px 1fr;gap:8px}
+.facts .at{font:500 11.5px var(--f-mono);color:var(--faint);padding-top:2px}
+.new{font:600 10.5px/1 var(--f-mono);color:var(--accent);margin-left:6px;letter-spacing:.06em}
+.kind{font:500 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.timeline{list-style:none;margin:10px 0 0;padding:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 18px 18px}
+.timeline li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.timeline .when{font:500 12.5px var(--f-mono);color:var(--accent)}
+.timeline .src{font-size:12px;color:var(--faint)}
+.empty{color:var(--muted);padding:20px 0}
+/* character */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:12px}
+.art{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.art img{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--sunk);display:block}
+.art .meta{padding:7px 9px;font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+.art .meta b{color:var(--ink);font-weight:600}
+.art .x{align-self:flex-start;background:none;border:none;padding:0;color:var(--faint);font-size:12px;text-decoration:underline}
+.hidden-note{font-size:13px;color:var(--faint);margin-top:8px}
+/* sheet + toast */
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--surface);border-radius:18px 18px 0 0;width:100%;max-width:560px;max-height:92vh;overflow:auto;padding:18px max(16px,env(safe-area-inset-left,0px)) calc(18px + env(safe-area-inset-bottom,0px))}
+.sheet h3{margin-top:0}
+.field{margin-top:12px;display:flex;flex-direction:column;gap:5px;font-size:13.5px;color:var(--muted)}
+.field input,.field select,.field textarea{padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:10px;font-size:14px;z-index:60;max-width:calc(100vw - 32px)}
+#auth{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px}
+[hidden]{display:none!important}
+#auth .box{max-width:360px;width:100%;text-align:center}
+#auth .btn{width:100%;margin-top:10px}
+@media (max-width:540px){.cbody{padding-left:2px}.cwhere{display:none}details.chap summary{grid-template-columns:36px 1fr}}
+</style>
+
+</head>
+<body>
+<div id="auth" hidden><div class="box">
+  <img src="data:image/png;base64,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" alt="" width="72" height="72" style="border-radius:18px">
+  <h1>NovelReader</h1>
+  <p class="sub">Your light novel collection, recaps and character notes. Saved to your Google Drive.</p>
+  <button class="btn primary" id="signin" onclick="signIn()">Sign in with Google</button>
+  <p><a href="#" class="sub" onclick="event.preventDefault();redirectSignIn()">Sign-in window not opening? Try another way</a></p>
+  <p class="sub" id="auth-msg"></p>
+</div></div>
+
+<div class="wrap" id="app"></div>
+<input type="file" id="pack-input" accept=".json,application/json" multiple hidden>
+<input type="file" id="art-input" accept="image/*" multiple hidden>
+
+<script>
+/* ============================== CONFIG ============================== */
+const CLIENT_ID = '669494100250-gvromuq72r7j0djmkd4vdbdq5damncj7.apps.googleusercontent.com';
+const SCOPE = 'https://www.googleapis.com/auth/drive.file';
+const API = 'https://www.googleapis.com/drive/v3/files';
+const UPLOAD = 'https://www.googleapis.com/upload/drive/v3/files';
+const DATA_FILE = 'novelreader-data.json';
+const FOLDER = 'NovelReader';
+// Demo mode: the preview page injects window.NR_DEMO; the real app never ships book content.
+const DEMO = !!window.NR_DEMO;
+const LS = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} }, del: k => { try { localStorage.removeItem(k); } catch (e) {} } };
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fold = s => String(s).toLowerCase().normalize('NFKD').replace(/[^a-z0-9 ]/g, '');
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+const pad = n => String(n).padStart(2, '0');
+
+/* ============================== STATE ==============================
+ data = { app, version, series:[{ id, title, author, note, volumes:[{ n, subtitle, jp, en, owned, notesFileId, coverFileId }] }],
+          progress:{ [seriesId]: { v, ch } }, art:[{ id, seriesId, charId, fileId, thumbFileId, tag:{kind:'volume',v}|{kind:'fanart'}, caption, added }],
+          upcoming:[] }
+ packs: Map 'sid:n' -> volume pack (notes), loaded from Drive on demand */
+let data = null, fileId = null, folderId = null;
+const packs = new Map();
+const imgCache = new Map();          // Drive fileId or 'pack:sid:n' -> object/data URL
+let ROUTE = { view: 'library' };     // library | series | volume | character
+let TAB = { series: 'people', volume: 'story' };
+let FILTER = { group: 'All', kind: 'All', q: '' };
+
+/* ============================== SPOILER GATE ============================== */
+const prog = sid => data.progress[sid] || { v: 0, ch: 0 };
+function visible(sid, v, ch) { const p = prog(sid); return v < p.v || (v === p.v && ch <= p.ch); }
+function chaptersOf(sid, n) { const pk = packs.get(sid + ':' + n); return pk ? pk.volume.chapters : 999; }
+
+/* ============================== CONSOLIDATION ============================== */
+function processedVols(s) { return s.volumes.filter(v => v.notesFileId || packs.has(s.id + ':' + v.n)).map(v => v.n).sort((a, b) => a - b); }
+function seriesPacks(s) { return processedVols(s).map(n => packs.get(s.id + ':' + n)).filter(Boolean); }
+function consolidatePeople(s, onlyVol) {
+  const out = new Map();
+  for (const pk of seriesPacks(s)) {
+    const n = pk.volume.n;
+    if (onlyVol && n !== onlyVol) continue;
+    for (const p of pk.people) {
+      if (!visible(s.id, n, p.from)) continue;
+      let e = out.get(p.id);
+      if (!e) { e = { id: p.id, firstSeen: [n, p.from], aka: [], facts: [], status: [] }; out.set(p.id, e); }
+      Object.assign(e, { name: p.name, group: p.group, role: p.role, lastVol: n });
+      (p.aka || []).forEach(a => visible(s.id, n, a[0]) && e.aka.push([n, a[0], a[1]]));
+      p.facts.forEach(f => visible(s.id, n, f[0]) && e.facts.push([n, f[0], f[1]]));
+      p.status.forEach(st => visible(s.id, n, st[0]) && e.status.push([n, st[0], st[1], st[2]]));
+    }
+  }
+  return [...out.values()];
+}
+function consolidateTerms(s, onlyVol) {
+  const out = new Map();
+  for (const pk of seriesPacks(s)) {
+    const n = pk.volume.n;
+    if (onlyVol && n !== onlyVol) continue;
+    for (const t of pk.terms) {
+      if (!visible(s.id, n, t.at)) continue;
+      const k = fold(t.name);
+      const e = out.get(k);
+      if (!e) out.set(k, { name: t.name, kind: t.kind, text: t.text, first: [n, t.at], updated: null });
+      else { e.text = t.text; e.updated = [n, t.at]; }
+    }
+  }
+  return [...out.values()];
+}
+function consolidateTimeline(s, onlyVol) {
+  const out = [];
+  for (const pk of seriesPacks(s)) {
+    const n = pk.volume.n;
+    if (onlyVol && n !== onlyVol) continue;
+    pk.timeline.forEach(e => visible(s.id, n, e.at) && out.push({ ...e, v: n }));
+  }
+  return out;
+}
+const isNew = (sid, v, ch) => { const p = prog(sid); return v === p.v && ch === p.ch && ch > 0; };
+
+/* ============================== IMAGES ============================== */
+async function imgUrl(key) {
+  if (imgCache.has(key)) return imgCache.get(key);
+  if (key.startsWith('pack:')) { const pk = packs.get(key.slice(5)); return pk && pk.cover; }
+  if (DEMO) return null;
+  const r = await dfetch(`${API}/${key}?alt=media`);
+  const url = URL.createObjectURL(await r.blob());
+  imgCache.set(key, url); return url;
+}
+function hydrateImages() {
+  document.querySelectorAll('img[data-img]').forEach(async el => {
+    try { const u = await imgUrl(el.dataset.img); if (u) el.src = u; } catch (e) { console.warn('image', e); }
+  });
+}
+function coverKey(s, v) { return v.coverFileId || (packs.get(s.id + ':' + v.n)?.cover ? 'pack:' + s.id + ':' + v.n : null); }
+function coverEl(s, v, cls = 'cover') {
+  const key = coverKey(s, v);
+  if (key) return `<img class="${cls}" data-img="${esc(key)}" alt="${esc(s.title)} volume ${v.n} cover">`;
+  return `<div class="ph"><span class="n">${pad(v.n)}</span><span>${esc(v.subtitle || s.title)}</span></div>`;
+}
+
+/* ============================== VIEWS ============================== */
+function go(view, args = {}) { ROUTE = { view, ...args }; FILTER = { group: 'All', kind: 'All', q: '' }; render(); window.scrollTo(0, 0); }
+function crumbs() {
+  const s = ROUTE.sid && getSeries(ROUTE.sid);
+  const parts = [`<button onclick="go('library')">Library</button>`];
+  if (s && ROUTE.view !== 'series') parts.push(`<span class="sep">/</span><button onclick="go('series',{sid:'${s.id}'})">${esc(s.title)}</button>`);
+  return `<nav class="crumbs">${ROUTE.view === 'library' ? '<span class="eyebrow">NovelReader</span>' : parts.join('')}</nav>`;
+}
+const getSeries = id => data.series.find(s => s.id === id);
+
+function viewLibrary() {
+  let h = crumbs() + `<h1>Library</h1><p class="sub">${data.series.length} series · ${data.series.reduce((a, s) => a + s.volumes.filter(v => v.owned).length, 0)} volumes collected</p>`;
+  h += `<div class="lib">` + data.series.map(s => {
+    const owned = s.volumes.filter(v => v.owned).length, total = s.volumes.length, done = processedVols(s).length;
+    const first = s.volumes.find(v => coverKey(s, v)) || s.volumes[0];
+    const p = prog(s.id);
+    return `<button class="scard" onclick="go('series',{sid:'${s.id}'})">${first ? coverEl(s, first) : ''}<div style="min-width:0">
+      <div class="t">${esc(s.title)}</div><div class="sub">${esc(s.author)}</div>
+      <div class="meter" aria-hidden="true"><i style="width:${total ? owned / total * 100 : 0}%"></i></div>
+      <div class="sub">${owned} of ${total} owned · ${done} with notes</div>
+      <div class="sub">${p.v ? `Up to volume ${p.v}` : 'Not started'}</div></div></button>`;
+  }).join('') + `</div>`;
+  h += `<h3>Add notes</h3><div class="row"><button class="btn" onclick="$('#pack-input').click()">Import volume pack</button><span class="sub">Packs are the .json files Claude makes from your books.</span></div>`;
+  return h;
+}
+
+function gate(sid, kind, n) {
+  const p = prog(sid), s = getSeries(sid);
+  if (kind === 'series') {
+    const max = Math.max(1, ...processedVols(s), p.v);
+    const label = p.v === 0 ? 'nothing yet' : `volume ${p.v}${p.ch < chaptersOf(sid, p.v) ? `, chapter ${p.ch}` : ''}`;
+    return `<div class="gate"><div class="gate-inner"><label for="gate-v"><span>I've read up to <b>${label}</b></span><span class="val">${p.v ? 'Vol ' + p.v : 'Start'}</span></label>
+      <input type="range" id="gate-v" min="0" max="${max}" value="${Math.min(p.v, max)}" oninput="this.closest('.gate-inner').querySelector('.val').textContent=+this.value?'Vol '+this.value:'Start'" onchange="setVol('${sid}',this.value)">
+      <div class="tabs" role="tablist">${[['people', "Who's who"], ['terms', "What's what"], ['timeline', 'Timeline'], ['shelf', 'Shelf']].map(([k, l]) => `<button class="tab" role="tab" aria-selected="${TAB.series === k}" onclick="TAB.series='${k}';render()">${l}</button>`).join('')}</div></div></div>`;
+  }
+  const chs = chaptersOf(sid, n);
+  const val = p.v > n ? chs : p.v < n ? 0 : Math.min(p.ch, chs);
+  return `<div class="gate"><div class="gate-inner"><label for="gate-c"><span>In volume ${n}, I've read up to <b>${val === chs ? 'the end' : val === 0 ? 'nothing yet' : 'chapter ' + val}</b></span><span class="val">${val ? 'Ch ' + val : 'Start'}</span></label>
+    <input type="range" id="gate-c" min="0" max="${chs}" value="${val}" oninput="this.closest('.gate-inner').querySelector('.val').textContent=+this.value?'Ch '+this.value:'Start'" onchange="setCh('${sid}',${n},this.value)">
+    <div class="tabs" role="tablist">${[['story', 'Story'], ['people', "Who's who"], ['terms', "What's what"], ['timeline', 'Timeline']].map(([k, l]) => `<button class="tab" role="tab" aria-selected="${TAB.volume === k}" onclick="TAB.volume='${k}';render()">${l}</button>`).join('')}</div></div></div>`;
+}
+function setVol(sid, v) { v = +v; data.progress[sid] = { v, ch: v ? chaptersOf(sid, v) : 0 }; save(); render(true); }
+function setCh(sid, n, ch) { ch = +ch; data.progress[sid] = ch === 0 ? { v: n - 1, ch: n > 1 ? chaptersOf(sid, n - 1) : 0 } : { v: n, ch }; save(); render(true); }
+
+function viewSeries() {
+  const s = getSeries(ROUTE.sid);
+  const owned = s.volumes.filter(v => v.owned), missing = s.volumes.filter(v => !v.owned);
+  const done = processedVols(s);
+  const first = s.volumes.find(v => coverKey(s, v)) || s.volumes[0];
+  let h = crumbs() + `<div class="hero">${coverEl(s, first)}<div><div class="eyebrow">Series</div><h1>${esc(s.title)}</h1><div class="sub">${esc(s.author)}</div>
+    <div class="stats"><span><b>${owned.length}/${s.volumes.length}</b>owned</span><span><b>${done.length}</b>with notes</span><span><b>${missing.length}</b>to get</span></div>
+    ${missing.length ? `<div class="get">${missing.map(v => `<span class="pill ${v.en ? '' : 'jp'}">Vol ${v.n}${v.en ? '' : ' · Japan only'}</span>`).join('')}</div>` : '<p class="sub">You have every published volume.</p>'}
+    ${s.note ? `<p class="sub" style="margin-top:8px">${esc(s.note)}</p>` : ''}</div></div>`;
+  h += gate(s.id, 'series');
+  if (TAB.series === 'shelf') h += shelf(s);
+  else if (TAB.series === 'people') h += peopleList(s);
+  else if (TAB.series === 'terms') h += termList(s);
+  else h += timelineList(s);
+  return h;
+}
+function shelf(s) {
+  const p = prog(s.id);
+  return `<h3>Volumes</h3><div class="shelf">` + s.volumes.map(v => {
+    const has = v.notesFileId || packs.has(s.id + ':' + v.n);
+    const state = has ? '<span class="tag ok">Notes ready</span>' : v.owned ? '<span class="tag own">Owned · no notes yet</span>' : `<span class="tag miss">To get${v.en ? '' : ' · JP only'}</span>`;
+    const cls = !v.owned ? 'missing' : v.n > p.v ? 'unread' : '';
+    return `<button class="${cls}" ${has ? `onclick="openVolume('${s.id}',${v.n})"` : 'disabled'} aria-label="Volume ${v.n}">${coverEl(s, v)}<span class="cap"><b>${v.n}</b> ${esc(v.subtitle || '')}<br>${state}</span></button>`;
+  }).join('') + `</div><p class="hidden-note">Dimmed covers are volumes past where you've read.</p>`;
+}
+async function openVolume(sid, n) { await ensurePack(sid, n); go('volume', { sid, n }); }
+
+function peopleList(s, onlyVol) {
+  const people = consolidatePeople(s, onlyVol);
+  const groups = ['All', ...new Set(people.map(p => p.group))];
+  if (!groups.includes(FILTER.group)) FILTER.group = 'All';
+  let h = `<input class="search" id="q" type="search" placeholder="Search names, roles, facts" value="${esc(FILTER.q)}" aria-label="Search people">
+    <div class="chips">${groups.map(g => `<button class="chip" aria-pressed="${FILTER.group === g}" onclick="FILTER.group=this.textContent;render(true)">${esc(g)}</button>`).join('')}</div>`;
+  const shown = people.filter(p => FILTER.group === 'All' || p.group === FILTER.group)
+    .filter(p => !FILTER.q || fold([p.name, p.role, ...p.aka.map(a => a[2]), ...p.facts.map(f => f[2])].join(' ')).includes(fold(FILTER.q)));
+  if (!shown.length) return h + `<p class="empty">${people.length ? 'No one matches.' : 'No characters yet at this point in the story.'}</p>`;
+  return h + `<div class="grid">${shown.map(p => {
+    const st = p.status[p.status.length - 1] || [0, 0, 'unknown', 'Unknown'];
+    const art = portraitFor(s.id, p.id);
+    const facts = onlyVol ? p.facts : p.facts.slice(-4);
+    return `<article class="card"><button class="pcard" style="background:none;border:none;padding:0" onclick="go('character',{sid:'${s.id}',cid:'${p.id}'})">
+      ${art ? `<img class="portrait" data-img="${esc(art)}" alt="">` : `<span class="portrait">${esc(p.name[0])}</span>`}
+      <span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span class="name">${esc(p.name)}${isNew(s.id, p.firstSeen[0], p.firstSeen[1]) ? '<span class="new">NEW</span>' : ''}</span>
+      ${p.aka.length ? `<span class="aka">${p.aka.map(a => esc(a[2])).join(' · ')}</span>` : ''}
+      <span style="font-size:14px">${esc(p.role)}</span><span class="status ${st[2]}">${esc(st[3])}</span></span></button>
+      <ul class="facts">${facts.map(f => `<li><span class="at">${onlyVol ? '' : 'V' + f[0] + ' '}Ch ${f[1]}</span><span>${esc(f[2])}</span></li>`).join('')}</ul>
+      ${!onlyVol && p.facts.length > 4 ? `<button class="btn" style="align-self:flex-start" onclick="go('character',{sid:'${s.id}',cid:'${p.id}'})">All ${p.facts.length} notes and pictures</button>` : ''}</article>`;
+  }).join('')}</div>`;
+}
+function termList(s, onlyVol) {
+  const terms = consolidateTerms(s, onlyVol);
+  const kinds = ['All', ...new Set(terms.map(t => t.kind))];
+  if (!kinds.includes(FILTER.kind)) FILTER.kind = 'All';
+  let h = `<input class="search" id="q" type="search" placeholder="Search places, groups, terms" value="${esc(FILTER.q)}" aria-label="Search terms">
+    <div class="chips">${kinds.map(k => `<button class="chip" aria-pressed="${FILTER.kind === k}" onclick="FILTER.kind=this.textContent;render(true)">${esc(k)}</button>`).join('')}</div>`;
+  const shown = terms.filter(t => (FILTER.kind === 'All' || t.kind === FILTER.kind) && (!FILTER.q || fold(t.name + ' ' + t.text).includes(fold(FILTER.q))));
+  if (!shown.length) return h + `<p class="empty">${terms.length ? 'Nothing matches.' : 'Nothing introduced yet.'}</p>`;
+  return h + `<div class="grid">${shown.map(t => `<article class="card"><span class="kind">${esc(t.kind)} · V${t.first[0]} Ch ${t.first[1]}${t.updated ? ` · updated V${t.updated[0]}` : ''}</span><div class="name">${esc(t.name)}${isNew(s.id, t.first[0], t.first[1]) ? '<span class="new">NEW</span>' : ''}</div><div>${esc(t.text)}</div></article>`).join('')}</div>`;
+}
+function timelineList(s, onlyVol) {
+  const items = consolidateTimeline(s, onlyVol);
+  if (!items.length) return `<p class="empty">Nothing on the timeline yet.</p>`;
+  return `<h2>In-world timeline</h2><ol class="timeline">${items.map(e => `<li><div class="when">${esc(e.when)}</div><div>${esc(e.what)}</div><div class="src">Volume ${e.v}, chapter ${e.at}</div></li>`).join('')}</ol>`;
+}
+
+function viewVolume() {
+  const s = getSeries(ROUTE.sid), n = ROUTE.n, pk = packs.get(s.id + ':' + n), v = s.volumes.find(x => x.n === n);
+  if (!pk) return crumbs() + `<p class="empty">Loading volume ${n}…</p>`;
+  const p = prog(s.id), chs = pk.volume.chapters;
+  const upto = p.v > n ? chs : p.v < n ? 0 : p.ch;
+  let h = crumbs() + `<div class="hero">${coverEl(s, v)}<div><div class="eyebrow">${esc(s.title)} · Volume ${n}</div><h1>${esc(pk.volume.subtitle)}</h1><div class="sub">${esc(s.author)} · ${chs} chapters</div>
+    ${v.en || v.jp ? `<div class="sub">Published ${v.jp ? 'in Japan ' + esc(v.jp) : ''}${v.jp && v.en ? ' · ' : ''}${v.en ? 'in English ' + esc(v.en) : ''}</div>` : ''}</div></div>`;
+  h += gate(s.id, 'volume', n);
+  if (TAB.volume === 'story') {
+    if (upto === chs) h += `<h2>The volume in brief</h2><div class="recap">${pk.recap.map(x => `<p>${esc(x)}</p>`).join('')}</div>`;
+    else h += `<div class="locked">The volume recap unlocks when you reach the end. Chapter recaps stop at chapter ${upto}.</div>`;
+    const list = pk.chapters.filter(c => c.n <= upto);
+    h += `<h3>Chapter by chapter</h3>` + (list.length ? list.map(c => `<details class="chap" ${c.n === upto && upto < chs ? 'open' : ''}><summary><span class="num">${pad(c.n)}</span><span class="ctitle">${esc(c.title)}</span><span class="cwhere">${esc(c.where)}</span></summary><div class="cbody"><p>${esc(c.summary)}</p>${c.points.length ? `<ul>${c.points.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div></details>`).join('') : `<p class="empty">Move the slider to the last chapter you've read.</p>`);
+  } else if (TAB.volume === 'people') h += peopleList(s, n);
+  else if (TAB.volume === 'terms') h += termList(s, n);
+  else h += timelineList(s, n);
+  return h;
+}
+
+function portraitFor(sid, cid) {
+  const p = prog(sid);
+  const arts = data.art.filter(a => a.seriesId === sid && a.charId === cid);
+  const byVol = arts.filter(a => a.tag.kind === 'volume' && a.tag.v <= p.v).sort((a, b) => b.tag.v - a.tag.v);
+  const pick = byVol[0] || arts.find(a => a.tag.kind === 'fanart');
+  return pick ? (pick.localUrl ? 'local:' + pick.id : pick.thumbFileId || pick.fileId) : null;
+}
+function viewCharacter() {
+  const s = getSeries(ROUTE.sid);
+  const person = consolidatePeople(s).find(p => p.id === ROUTE.cid);
+  if (!person) return crumbs() + `<p class="empty">This character hasn't appeared yet at the point you've read to.</p>`;
+  const st = person.status[person.status.length - 1];
+  const p = prog(s.id);
+  const arts = data.art.filter(a => a.seriesId === s.id && a.charId === person.id);
+  const shown = arts.filter(a => a.tag.kind === 'fanart' || a.tag.v <= p.v).sort((a, b) => (a.tag.kind === 'fanart') - (b.tag.kind === 'fanart') || (a.tag.v || 0) - (b.tag.v || 0));
+  const hiddenCount = arts.length - shown.length;
+  let h = crumbs() + `<div class="eyebrow">${esc(person.group)}</div><h1>${esc(person.name)}</h1>
+    ${person.aka.length ? `<div class="aka">${person.aka.map(a => esc(a[2])).join(' · ')}</div>` : ''}
+    <p style="margin:6px 0">${esc(person.role)}</p>${st ? `<span class="status ${st[2]}">${esc(st[3])}</span>` : ''}
+    <p class="sub">First appears in volume ${person.firstSeen[0]}, chapter ${person.firstSeen[1]}. Showing what you know up to volume ${p.v}${p.ch < chaptersOf(s.id, p.v) ? ', chapter ' + p.ch : ''}.</p>`;
+  h += `<h3>Pictures</h3><div class="row"><button class="btn primary" onclick="startUpload('${s.id}','${person.id}')">Add pictures</button><span class="sub">Tag each to a volume, or as fan art.</span></div>`;
+  h += shown.length ? `<div class="gallery">${shown.map(a => `<figure class="art" style="margin:0"><img data-img="${a.localUrl ? 'local:' + a.id : esc(a.thumbFileId || a.fileId)}" alt="${esc(person.name)}"><figcaption class="meta"><b>${a.tag.kind === 'fanart' ? 'Fan art' : 'Volume ' + a.tag.v}</b>${a.caption ? esc(a.caption) : ''}<button class="x" onclick="removeArt('${a.id}')">Remove</button></figcaption></figure>`).join('')}</div>` : `<p class="empty">No pictures yet.</p>`;
+  if (hiddenCount) h += `<p class="hidden-note">${hiddenCount} picture${hiddenCount > 1 ? 's are' : ' is'} tagged to volumes you haven't reached, so ${hiddenCount > 1 ? 'they stay' : 'it stays'} hidden.</p>`;
+  const byVol = {};
+  person.facts.forEach(f => (byVol[f[0]] = byVol[f[0]] || []).push(f));
+  h += `<h3>What happens to them</h3>` + Object.keys(byVol).map(v => `<h2 style="font-size:17px;margin-top:16px">Volume ${v}</h2><ul class="facts">${byVol[v].map(f => `<li><span class="at">Ch ${f[1]}</span><span>${esc(f[2])}</span></li>`).join('')}</ul>`).join('');
+  return h;
+}
+
+/* ============================== RENDER ============================== */
+const $ = s => document.querySelector(s);
+function render(keepScroll) {
+  const y = window.scrollY, focused = document.activeElement && document.activeElement.id;
+  const app = $('#app');
+  app.innerHTML = ROUTE.view === 'library' ? viewLibrary() : ROUTE.view === 'series' ? viewSeries() : ROUTE.view === 'volume' ? viewVolume() : viewCharacter();
+  const q = $('#q');
+  if (q) q.addEventListener('input', e => { FILTER.q = e.target.value; render(true); });
+  if (focused === 'q' && q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
+  if (focused && focused.startsWith('gate') && $('#' + focused)) $('#' + focused).focus();
+  if (keepScroll) window.scrollTo(0, y);
+  hydrateImages();
+}
+
+/* ============================== PICTURES ============================== */
+let UP = null;
+function startUpload(sid, cid) { UP = { sid, cid }; $('#art-input').click(); }
+$('#art-input').addEventListener('change', e => {
+  const files = [...e.target.files]; e.target.value = '';
+  if (!files.length) return;
+  const s = getSeries(UP.sid);
+  const vols = s.volumes.filter(v => v.owned || v.notesFileId).map(v => v.n);
+  const person = consolidatePeople(s).find(p => p.id === UP.cid);
+  sheet(`<h3>Add ${files.length} picture${files.length > 1 ? 's' : ''} of ${esc(person.name)}</h3>
+    <div class="field"><label for="up-tag">What is it?</label><select id="up-tag"><option value="vol">Official art from a volume</option><option value="fanart">Fan art</option></select></div>
+    <div class="field" id="up-vol-wrap"><label for="up-vol">Which volume?</label><select id="up-vol">${vols.map(n => `<option value="${n}" ${n === prog(s.id).v ? 'selected' : ''}>Volume ${n}</option>`).join('')}</select></div>
+    <div class="field"><label for="up-cap">Caption (optional)</label><input id="up-cap" placeholder="e.g. Knights of the Blood uniform"></div>
+    <div class="row" style="margin-top:16px"><button class="btn" onclick="closeSheet()">Cancel</button><button class="btn primary" id="up-go">Add</button></div>`);
+  $('#up-tag').onchange = ev => { $('#up-vol-wrap').hidden = ev.target.value !== 'vol'; };
+  $('#up-go').onclick = async () => {
+    const tag = $('#up-tag').value === 'vol' ? { kind: 'volume', v: +$('#up-vol').value } : { kind: 'fanart' };
+    const caption = $('#up-cap').value.trim();
+    $('#up-go').disabled = true; $('#up-go').textContent = 'Uploading…';
+    try {
+      for (const f of files) await addArt(UP.sid, UP.cid, f, tag, caption);
+      closeSheet(); await save(); render(true); toast(`Added ${files.length} picture${files.length > 1 ? 's' : ''}`);
+    } catch (err) { console.error(err); toast('Upload failed: ' + err.message); $('#up-go').disabled = false; $('#up-go').textContent = 'Add'; }
+  };
+});
+function shrink(file, max, q) {
+  return new Promise((res, rej) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      const k = Math.min(1, max / Math.max(img.width, img.height));
+      const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+      c.toBlob(b => b ? res(b) : rej(new Error('Could not read that image')), 'image/jpeg', q);
+    };
+    img.onerror = () => rej(new Error('Could not read that image'));
+    img.src = url;
+  });
+}
+async function addArt(sid, cid, file, tag, caption) {
+  const id = uid();
+  const full = await shrink(file, 1800, 0.88), thumb = await shrink(file, 420, 0.82);
+  const rec = { id, seriesId: sid, charId: cid, tag, caption, added: new Date().toISOString().slice(0, 10) };
+  if (DEMO) { rec.localUrl = URL.createObjectURL(full); imgCache.set('local:' + id, URL.createObjectURL(thumb)); }
+  else {
+    rec.fileId = await uploadBlob(`nr-art-${sid}-${cid}-${id}.jpg`, full, 'image/jpeg');
+    rec.thumbFileId = await uploadBlob(`nr-art-${sid}-${cid}-${id}-thumb.jpg`, thumb, 'image/jpeg');
+  }
+  data.art.push(rec);
+}
+async function removeArt(id) {
+  const a = data.art.find(x => x.id === id); if (!a) return;
+  data.art = data.art.filter(x => x.id !== id);
+  if (!DEMO) for (const f of [a.fileId, a.thumbFileId].filter(Boolean)) { try { await dfetch(`${API}/${f}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ trashed: true }) }); } catch (e) {} }
+  await save(); render(true); toast('Picture removed (it is in your Drive trash for 30 days)');
+}
+
+/* ============================== IMPORT PACKS ============================== */
+$('#pack-input').addEventListener('change', async e => {
+  const files = [...e.target.files]; e.target.value = '';
+  let n = 0;
+  for (const f of files) {
+    try { const j = JSON.parse(await f.text()); await importPack(j); n++; }
+    catch (err) { console.error(err); toast(`${f.name}: ${err.message}`); }
+  }
+  if (n) { await save(); render(); toast(`Imported ${n} file${n > 1 ? 's' : ''}`); }
+});
+function upsertSeries(info) {
+  let s = getSeries(info.id);
+  if (!s) { s = { id: info.id, title: info.title, author: info.author || '', note: '', volumes: [] }; data.series.push(s); }
+  Object.assign(s, { title: info.title || s.title, author: info.author || s.author, note: info.note ?? s.note });
+  return s;
+}
+async function importPack(j) {
+  if (j.format === 'novelreader-series') {
+    const s = upsertSeries(j.series);
+    for (const v of j.series.volumes) {
+      const cur = s.volumes.find(x => x.n === v.n);
+      if (cur) Object.assign(cur, { subtitle: v.subtitle, jp: v.jp, en: v.en, owned: v.owned ?? cur.owned });
+      else s.volumes.push({ n: v.n, subtitle: v.subtitle, jp: v.jp, en: v.en, owned: !!v.owned });
+    }
+    s.volumes.sort((a, b) => a.n - b.n);
+    return;
+  }
+  if (j.format !== 'novelreader-volume') throw new Error('Not a NovelReader pack');
+  const s = upsertSeries(j.series);
+  let v = s.volumes.find(x => x.n === j.volume.n);
+  if (!v) { v = { n: j.volume.n, subtitle: j.volume.subtitle }; s.volumes.push(v); s.volumes.sort((a, b) => a.n - b.n); }
+  v.owned = true; v.subtitle = j.volume.subtitle;
+  const cover = j.cover; const notes = { ...j }; delete notes.cover;
+  if (!DEMO) {
+    if (cover) v.coverFileId = await uploadBlob(`novelreader-${s.id}-v${pad(v.n)}-cover.jpg`, await (await fetch(cover)).blob(), 'image/jpeg', v.coverFileId);
+    v.notesFileId = await uploadBlob(`novelreader-${s.id}-v${pad(v.n)}.json`, new Blob([JSON.stringify(notes)], { type: 'application/json' }), 'application/json', v.notesFileId);
+  }
+  packs.set(s.id + ':' + v.n, j);
+  if (!data.progress[s.id]) data.progress[s.id] = { v: 0, ch: 0 };
+}
+async function ensurePack(sid, n) {
+  const k = sid + ':' + n;
+  if (packs.has(k)) return packs.get(k);
+  const v = getSeries(sid).volumes.find(x => x.n === n);
+  if (!v || !v.notesFileId || DEMO) return null;
+  const pk = await (await dfetch(`${API}/${v.notesFileId}?alt=media`)).json();
+  packs.set(k, pk); return pk;
+}
+async function loadAllPacks() {
+  const jobs = [];
+  for (const s of data.series) for (const v of s.volumes) if (v.notesFileId) jobs.push(ensurePack(s.id, v.n).catch(e => console.warn('pack', s.id, v.n, e)));
+  await Promise.all(jobs);
+}
+
+/* ============================== SHEET / TOAST ============================== */
+function sheet(html) { closeSheet(); const bg = document.createElement('div'); bg.className = 'sheet-bg'; bg.id = 'sheet-bg'; bg.innerHTML = `<div class="sheet">${html}</div>`; bg.onclick = e => { if (e.target === bg) closeSheet(); }; document.body.appendChild(bg); }
+function closeSheet() { $('#sheet-bg')?.remove(); }
+function toast(m) { const t = document.createElement('div'); t.className = 'toast'; t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 3200); }
+
+/* ============================== GOOGLE AUTH + DRIVE ============================== */
+let tokenClient = null, accessToken = null;
+const savedTok = () => { try { return JSON.parse(LS.get('nr-token') || 'null'); } catch (e) { return null; } };
+function keepToken(t, exp) { accessToken = t; LS.set('nr-token', JSON.stringify({ t, exp: Date.now() + (Number(exp) || 3599) * 1000, email: (savedTok() || {}).email || '' })); }
+function authScreen(msg) { $('#auth').hidden = false; $('#auth-msg').textContent = msg || ''; const t = savedTok(); $('#signin').textContent = t && t.email ? 'Continue as ' + t.email : 'Sign in with Google'; }
+function waitGsi() {
+  if (typeof google === 'undefined' || !google.accounts) { setTimeout(waitGsi, 120); return; }
+  tokenClient = google.accounts.oauth2.initTokenClient({ client_id: CLIENT_ID, scope: SCOPE, callback: r => { if (r.error) { authScreen('Sign-in was cancelled.'); return; } keepToken(r.access_token, r.expires_in); start(); } });
+}
+function signIn() { if (!tokenClient) return; const t = savedTok(); tokenClient.requestAccessToken(t && t.email ? { prompt: '', login_hint: t.email } : { prompt: 'consent' }); }
+// iPhone home-screen fallback; needs https://marvyeo.github.io/NovelReader/ under Authorized redirect URIs.
+const REDIRECT_URI = location.origin + location.pathname;
+function redirectSignIn() { location.href = 'https://accounts.google.com/o/oauth2/v2/auth?' + new URLSearchParams({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI, response_type: 'token', scope: SCOPE, include_granted_scopes: 'true', prompt: 'select_account', state: 'novelreader' }); }
+function consumeRedirect() {
+  if (!location.hash.includes('access_token=')) return false;
+  const h = new URLSearchParams(location.hash.slice(1)); history.replaceState(null, '', REDIRECT_URI);
+  if (h.get('state') !== 'novelreader' || !h.get('access_token')) return false;
+  keepToken(h.get('access_token'), h.get('expires_in')); return true;
+}
+function signOut() { try { google.accounts.oauth2.revoke(accessToken, () => {}); } catch (e) {} LS.del('nr-token'); location.reload(); }
+async function dfetch(url, opts = {}) {
+  const r = await fetch(url, { ...opts, headers: { ...(opts.headers || {}), Authorization: `Bearer ${accessToken}` } });
+  if (r.status === 401) { const t = savedTok(); if (t) { t.exp = 0; LS.set('nr-token', JSON.stringify(t)); } authScreen('Your Google session timed out. Tap to continue; nothing is lost.'); throw new Error('session expired'); }
+  if (!r.ok) throw new Error(`Drive ${r.status}`);
+  return r;
+}
+async function findByName(name, extra = '') {
+  const q = encodeURIComponent(`name='${name}' and trashed=false${extra}`);
+  const j = await (await dfetch(`${API}?q=${q}&orderBy=modifiedTime desc&fields=files(id)`)).json();
+  return (j.files || [])[0]?.id || null;
+}
+async function ensureFolder() {
+  folderId = await findByName(FOLDER, " and mimeType='application/vnd.google-apps.folder'");
+  if (folderId) return;
+  const j = await (await dfetch(`${API}?fields=id`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: FOLDER, mimeType: 'application/vnd.google-apps.folder' }) })).json();
+  folderId = j.id;
+}
+async function uploadBlob(name, blob, mime, existingId) {
+  if (existingId) { await dfetch(`${UPLOAD}/${existingId}?uploadType=media`, { method: 'PATCH', headers: { 'Content-Type': mime }, body: blob }); return existingId; }
+  const form = new FormData();
+  form.append('metadata', new Blob([JSON.stringify({ name, mimeType: mime, parents: folderId ? [folderId] : undefined })], { type: 'application/json' }));
+  form.append('file', blob);
+  return (await (await dfetch(`${UPLOAD}?uploadType=multipart&fields=id`, { method: 'POST', body: form })).json()).id;
+}
+function normalise(d) { d = d || {}; d.app = 'novelreader'; d.version = 1; d.series = d.series || []; d.progress = d.progress || {}; d.art = d.art || []; d.upcoming = []; return d; }
+let saving = null;
+async function save() {
+  if (DEMO) return;
+  const body = JSON.stringify({ ...data, art: data.art.map(({ localUrl, ...a }) => a) });
+  saving = (async () => { fileId = await uploadBlob(DATA_FILE, new Blob([body], { type: 'application/json' }), 'application/json', fileId); })();
+  try { await saving; } catch (e) { console.error(e); toast('Not saved: ' + e.message); }
+}
+async function start() {
+  $('#auth').hidden = true;
+  $('#app').innerHTML = '<p class="empty">Opening your library…</p>';
+  try {
+    const me = await (await dfetch('https://www.googleapis.com/drive/v3/about?fields=user(emailAddress)')).json();
+    const t = savedTok() || {}; t.email = me.user?.emailAddress || ''; LS.set('nr-token', JSON.stringify(t));
+    await ensureFolder();
+    fileId = await findByName(DATA_FILE);
+    data = normalise(fileId ? await (await dfetch(`${API}/${fileId}?alt=media`)).json() : null);
+    if (!fileId) await save();
+    await loadAllPacks();
+    route(); render();
+  } catch (e) { if (!String(e.message).includes('session')) { console.error(e); $('#app').innerHTML = `<p class="empty">Couldn't open your library: ${esc(e.message)}. Check your connection and reload.</p>`; } }
+}
+function route() {
+  const h = location.hash.slice(1);
+  const m = h.match(/^(series|vol|char)-([a-z0-9]+)(?:-([a-z0-9]+))?$/);
+  if (!m || !getSeries(m[2])) return;
+  if (m[1] === 'series') ROUTE = { view: 'series', sid: m[2] };
+  else if (m[1] === 'vol') ROUTE = { view: 'volume', sid: m[2], n: +m[3] };
+  else ROUTE = { view: 'character', sid: m[2], cid: m[3] };
+}
+
+/* ============================== BOOT ============================== */
+if (DEMO) {
+  data = normalise(window.NR_DEMO.data);
+  (window.NR_DEMO.packs || []).forEach(pk => packs.set(pk.series.id + ':' + pk.volume.n, pk));
+  imgUrl = async key => key.startsWith('pack:') ? packs.get(key.slice(5))?.cover : imgCache.get(key) || null;
+  route(); render();
+} else {
+  if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+  const redirected = consumeRedirect();
+  const t = savedTok();
+  if (redirected || (t && t.t && t.exp > Date.now() + 60000)) { if (!redirected) accessToken = t.t; start(); }
+  else authScreen('');
+  waitGsi();
+}
+</script>
+
+</body>
+</html>
