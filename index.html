@@ -36,6 +36,9 @@ a{color:inherit}
 .crumbs{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);min-height:28px;flex-wrap:wrap}
 .crumbs button{background:none;border:none;padding:2px 0;color:var(--accent);font-weight:500}
 .crumbs .sep{color:var(--faint)}
+/* Sprint 13.2: shared theme tokens (same names in every app, mapped to this app's palette) and the back link */
+:root{--lp-bg:var(--bg);--lp-surface:var(--surface);--lp-text:var(--ink);--lp-muted:var(--muted);--lp-accent:var(--accent)}
+.lp-back{color:var(--lp-muted);text-decoration:none;font-weight:500}
 .eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 h1{font:700 clamp(28px,6vw,42px)/1.12 var(--f-display);margin:6px 0 4px;text-wrap:balance;letter-spacing:-.01em}
 h2{font:600 21px/1.25 var(--f-display);margin:26px 0 10px;text-wrap:balance}
@@ -259,7 +262,7 @@ function crumbs() {
   const s = ROUTE.sid && getSeries(ROUTE.sid);
   const parts = [`<button onclick="go('library')">Library</button>`];
   if (s && ROUTE.view !== 'series') parts.push(`<span class="sep">/</span><button onclick="go('series',{sid:'${s.id}'})">${esc(s.title)}</button>`);
-  return `<nav class="crumbs">${ROUTE.view === 'library' ? '<span class="eyebrow">NovelReader</span>' : parts.join('')}</nav>`;
+  return `<nav class="crumbs"><a class="lp-back" href="https://marvyeo.github.io/LifePlan/" aria-label="Back to Life Plan">← Life Plan</a><span class="sep">|</span>${ROUTE.view === 'library' ? '<span class="eyebrow">NovelReader</span>' : parts.join('')}</nav>`;
 }
 const getSeries = id => data.series.find(s => s.id === id);
 
@@ -542,7 +545,16 @@ function toast(m) { const t = document.createElement('div'); t.className = 'toas
 /* ============================== GOOGLE AUTH + DRIVE ============================== */
 let tokenClient = null, accessToken = null;
 const savedTok = () => { try { return JSON.parse(LS.get('nr-token') || 'null'); } catch (e) { return null; } };
-function keepToken(t, exp) { accessToken = t; LS.set('nr-token', JSON.stringify({ t, exp: Date.now() + (Number(exp) || 3599) * 1000, email: (savedTok() || {}).email || '' })); }
+function keepToken(t, exp) { accessToken = t; LS.set('nr-token', JSON.stringify({ t, exp: Date.now() + (Number(exp) || 3599) * 1000, email: (savedTok() || {}).email || '' })); ssoPublish(t, exp); }
+/* Shared sign-in with Life Plan and the other apps (Sprint 13.4). All apps share the origin https://marvyeo.github.io,
+   so localStorage is shared. Key `lp-sso` = { t, exp, email, scope, client }. Only a drive.file token for the shared client. */
+const SSO_KEY = 'lp-sso';
+function ssoPublish(t, exp) {
+  let email = ''; try { email = (JSON.parse(LS.get(SSO_KEY) || 'null') || {}).email || ''; } catch (e) {}
+  LS.set(SSO_KEY, JSON.stringify({ t, exp: Date.now() + (Number(exp) || 3599) * 1000, email, scope: SCOPE, client: CLIENT_ID }));
+}
+function ssoClear() { LS.del(SSO_KEY); }
+function ssoRead() { try { const x = JSON.parse(LS.get(SSO_KEY) || 'null'); return x && x.t && x.client === CLIENT_ID && x.scope === SCOPE && x.exp > Date.now() + 60000 ? x : null; } catch (e) { return null; } }
 function authScreen(msg) { $('#auth').hidden = false; $('#auth-msg').textContent = msg || ''; const t = savedTok(); $('#signin').textContent = t && t.email ? 'Continue as ' + t.email : 'Sign in with Google'; }
 function waitGsi() {
   if (typeof google === 'undefined' || !google.accounts) { setTimeout(waitGsi, 120); return; }
@@ -558,10 +570,11 @@ function consumeRedirect() {
   if (h.get('state') !== 'novelreader' || !h.get('access_token')) return false;
   keepToken(h.get('access_token'), h.get('expires_in')); return true;
 }
-function signOut() { try { google.accounts.oauth2.revoke(accessToken, () => {}); } catch (e) {} LS.del('nr-token'); location.reload(); }
+// No token revoke: every app shares one OAuth client, and revoking would cancel the file grants for all of them.
+function signOut() { LS.del('nr-token'); ssoClear(); location.reload(); }
 async function dfetch(url, opts = {}) {
   const r = await fetch(url, { ...opts, headers: { ...(opts.headers || {}), Authorization: `Bearer ${accessToken}` } });
-  if (r.status === 401) { const t = savedTok(); if (t) { t.exp = 0; LS.set('nr-token', JSON.stringify(t)); } authScreen('Your Google session timed out. Tap to continue; nothing is lost.'); throw new Error('session expired'); }
+  if (r.status === 401) { ssoClear(); const t = savedTok(); if (t) { t.exp = 0; LS.set('nr-token', JSON.stringify(t)); } authScreen('Your Google session timed out. Tap to continue; nothing is lost.'); throw new Error('session expired'); }
   if (!r.ok) throw new Error(`Drive ${r.status}`);
   return r;
 }
@@ -624,7 +637,9 @@ if (DEMO) {
   if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
   const redirected = consumeRedirect();
   const t = savedTok();
+  const shared = ssoRead(); // signed in through Life Plan or another app: no second sign-in
   if (redirected || (t && t.t && t.exp > Date.now() + 60000)) { if (!redirected) accessToken = t.t; start(); }
+  else if (shared) { accessToken = shared.t; LS.set('nr-token', JSON.stringify({ t: shared.t, exp: shared.exp, email: (t && t.email) || shared.email || '' })); start(); }
   else authScreen('');
   waitGsi();
 }
