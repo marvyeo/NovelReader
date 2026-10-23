@@ -1,9 +1,9 @@
 # NovelReader — Project State
 
-> **Next chat name: `NovelReader ver 4`**
-> Claude: your FIRST reply in a new chat must start with "Rename this chat to: **NovelReader ver 4**" (you can't rename chats yourself). In your first commit this session, bump the number here by 1.
+> **Next chat name: `NovelReader ver 6`**
+> Claude: your FIRST reply in a new chat must start with "Rename this chat to: **NovelReader ver 6**" (you can't rename chats yourself). In your first commit this session, bump the number here by 1.
 
-**State version:** 3 (SAO vol 2 notes done 2026-10-23 in "NovelReader Session 1"; v1.0 built 2026-10-21 by the conductor chat "Life Plan Roadmap ver 2"; pushed live 2026-10-22 by "Life Plan Roadmap ver 3")
+**State version:** 5 (SAO vol 4 notes done 2026-10-23 in "NovelReader ver 5"; SAO vol 3 notes done 2026-10-23 in "NovelReader ver 4"; SAO vol 2 notes done 2026-10-23 in "NovelReader Session 1"; v1.0 built 2026-10-21 by the conductor chat "Life Plan Roadmap ver 2"; pushed live 2026-10-22 by "Life Plan Roadmap ver 3")
 **Where this lives:** `PROJECT_STATE.md` in the repo. New chats `git pull` and read it; no uploads needed.
 
 ## ⚙ Session Rules (every chat that works on this app follows these)
@@ -65,7 +65,7 @@ Reading position is one pointer per series, `{v, ch}`. An item from volume `n`, 
 ## Library status (2026-10-23)
 | Series | Published (main) | Owned (folder) | Notes |
 |---|---|---|---|
-| Sword Art Online | 29 (vol 29 Japan only) | 1–27 | Vols 1–2 (vol 2 pack `sao-v02.json` delivered; Marvin to import) |
+| Sword Art Online | 29 (vol 29 Japan only) | 1–27 | Vols 1–4 (packs `sao-v02/03/04.json` delivered into the LightNovels folder; Marvin to import) |
 | Accel World | 28 (vol 28 Japan only; English due Dec 2026) | 1–3, 5–27 (vol 4 missing) | none |
 | High School DxD | 25, complete (sequel True DxD: 4 in Japan) | 1–25 | none |
 
@@ -74,9 +74,12 @@ Reading position is one pointer per series, `{v, ch}`. An item from volume `n`, 
 - [ ] Marvin: Settings → Pages → Deploy from branch → `main` / root.
 - [ ] Marvin: add `https://marvyeo.github.io/NovelReader/` under Authorized redirect URIs (shared client, project 669494100250). The JS origin `https://marvyeo.github.io` is already there.
 - [ ] First run: import `sao-series.json`, `aw-series.json`, `dxd-series.json` and `sao-v01.json`.
-- [ ] Next volumes to process: Marvin's call (SAO 2 onward), in "NovelReader ver 4" on Sonnet.
+- [ ] Marvin: import `sao-v02.json`, `sao-v03.json` and `sao-v04.json`; check vol 3's person ids against the app (see change log).
+- [ ] Next volume: SAO vol 5 (Alfheim Online/Phantom Bullet start; Marvin's call), in "NovelReader ver 6" on Sonnet. Read ids only from `sao-v01/02/03/04.json` for id reuse, not the whole files.
 
 ## Change log
+- **2026-10-23 (ver 5):** Processed SAO vol 4 (Fairy Dance conclusion): 18 sequential scene-chapters (1-4 Jotunheim/Tonky/Alne; 5 Asuna's lab escape; 6-12 hospital visit, first and second World Tree assaults, Suguha's reveal and duel; 13-14 reunion and Sugou's defeat, Kayaba's Seed; 15 hospital car park; 16-18 spring 2025 epilogue: school, Aincrad Conquest Celebration, Aincrad appears). Pack `sao-v04.json`, series id `sao`. Reused 15 ids from vol 3 (`kirito, asuna, yui, suguha, recon, sugou, shouzou, kayaba, klein, agil, silica, lisbeth, sakuya, alicia, eugene`); new ids: `tonky, rinko, thinker, yuriel, sasha`. Book gives no exact dates for vol 4, so the timeline uses 'Jan 2025' / 'Spring 2025'. Cost: about 85k tokens of book text on Sonnet.
+- **2026-10-23 (ver 4):** Processed SAO vol 3 (Fairy Dance): prologue plus 3 long chapters split into 21 sequential scene-chapters (1 prologue; 2-6 real world and the dive; 7-11 first ALO day; 12 Asuna's cage; 13 Swilvane and Sigurd; 14 mirror code; 15-20 journey to Alne; 21 Asuna's escape). Pack `sao-v03.json`, series id `sao`. Reused ids `kirito, asuna, yui, agil, kayaba, klein, silica, lisbeth`. New ids: `suguha` (Leafa shown as an alias from ch 11, where the book reveals it; her in-game facts are filed at ch 11 to avoid a spoiler), `midori, minetaka, shouzou, sugou` (Oberon alias from ch 12), `recon` (Nagata alias from ch 11), `sigurd, sakuya, alicia, eugene, kagemune, mortimer`. Book dates are inconsistent (9 Jan duel, then 'Monday 20 Jan' for the next day), so later chapters use 20/21 Jan 2025 as printed. Cost: about 160k tokens of book text on Sonnet; the chat is now long, so start SAO vol 4 in a fresh chat.
 - **2026-10-23:** Processed SAO vol 2 (Aincrad, 4 side stories, numbered as 15 sequential chapters: Silica 1–3, Lisbeth 4–7, Yui 8–11, Christmas 12–15). Pack `sao-v02.json`, series id `sao`. Vol 1's pack wasn't available in this chat, so person ids (`kirito`, `asuna`, `klein`, `heathcliff`, `kayaba`, `argo`) are the obvious slugs; **check them against vol 1's ids when importing and rename if they differ**. Reading cost ~95k tokens of book text on Sonnet.
 - **v1.0 (2026-10-21):** Initial build from the SAO vol 1 test.
 - **2026-10-22:** pushed live. Production page = the preview minus the demo block, plus the Google sign-in script, manifest, service worker and icons. Smoke-tested: opens to the sign-in screen, no script errors. Added Session Rules and `CLAUDE.md`.
