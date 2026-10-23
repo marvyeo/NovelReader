@@ -1,9 +1,9 @@
 # NovelReader — Project State
 
-> **Next chat name: `NovelReader ver 3`**
-> Claude: your FIRST reply in a new chat must start with "Rename this chat to: **NovelReader ver 3**" (you can't rename chats yourself). In your first commit this session, bump the number here by 1.
+> **Next chat name: `NovelReader ver 4`**
+> Claude: your FIRST reply in a new chat must start with "Rename this chat to: **NovelReader ver 4**" (you can't rename chats yourself). In your first commit this session, bump the number here by 1.
 
-**State version:** 2 (v1.0 built 2026-10-21 by the conductor chat "Life Plan Roadmap ver 2"; pushed live 2026-10-22 by "Life Plan Roadmap ver 3")
+**State version:** 3 (SAO vol 2 notes done 2026-10-23 in "NovelReader Session 1"; v1.0 built 2026-10-21 by the conductor chat "Life Plan Roadmap ver 2"; pushed live 2026-10-22 by "Life Plan Roadmap ver 3")
 **Where this lives:** `PROJECT_STATE.md` in the repo. New chats `git pull` and read it; no uploads needed.
 
 ## ⚙ Session Rules (every chat that works on this app follows these)
@@ -62,10 +62,10 @@ Reading position is one pointer per series, `{v, ch}`. An item from volume `n`, 
 4. Deliver the pack file to Marvin; he imports it.
 5. **Budget:** one volume is an **L** job (~90k tokens of reading on Opus, much less on Sonnet). One volume per checkpoint; update "Library status" below after each, and pause per the Session Rules. Online research is a fallback for volume-level notes only (no chapter detail, spoiler leaks).
 
-## Library status (2026-10-21)
+## Library status (2026-10-23)
 | Series | Published (main) | Owned (folder) | Notes |
 |---|---|---|---|
-| Sword Art Online | 29 (vol 29 Japan only) | 1–27 | Vol 1 |
+| Sword Art Online | 29 (vol 29 Japan only) | 1–27 | Vols 1–2 (vol 2 pack `sao-v02.json` delivered; Marvin to import) |
 | Accel World | 28 (vol 28 Japan only; English due Dec 2026) | 1–3, 5–27 (vol 4 missing) | none |
 | High School DxD | 25, complete (sequel True DxD: 4 in Japan) | 1–25 | none |
 
@@ -77,5 +77,6 @@ Reading position is one pointer per series, `{v, ch}`. An item from volume `n`, 
 - [ ] Next volumes to process: Marvin's call (SAO 2 onward), in "NovelReader ver 4" on Sonnet.
 
 ## Change log
+- **2026-10-23:** Processed SAO vol 2 (Aincrad, 4 side stories, numbered as 15 sequential chapters: Silica 1–3, Lisbeth 4–7, Yui 8–11, Christmas 12–15). Pack `sao-v02.json`, series id `sao`. Vol 1's pack wasn't available in this chat, so person ids (`kirito`, `asuna`, `klein`, `heathcliff`, `kayaba`, `argo`) are the obvious slugs; **check them against vol 1's ids when importing and rename if they differ**. Reading cost ~95k tokens of book text on Sonnet.
 - **v1.0 (2026-10-21):** Initial build from the SAO vol 1 test.
 - **2026-10-22:** pushed live. Production page = the preview minus the demo block, plus the Google sign-in script, manifest, service worker and icons. Smoke-tested: opens to the sign-in screen, no script errors. Added Session Rules and `CLAUDE.md`.
