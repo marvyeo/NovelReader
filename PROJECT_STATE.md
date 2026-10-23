@@ -74,7 +74,7 @@ Reading position is one pointer per series, `{v, ch}`. An item from volume `n`, 
 - [ ] Marvin: Settings → Pages → Deploy from branch → `main` / root.
 - [ ] Marvin: add `https://marvyeo.github.io/NovelReader/` under Authorized redirect URIs (shared client, project 669494100250). The JS origin `https://marvyeo.github.io` is already there.
 - [ ] First run: import `sao-series.json`, `aw-series.json`, `dxd-series.json` and `sao-v01.json`.
-- [ ] Next volumes to process: Marvin's call (SAO 2 onward), in "NovelReader ver 3" on Sonnet.
+- [ ] Next volumes to process: Marvin's call (SAO 2 onward), in "NovelReader ver 4" on Sonnet.
 
 ## Change log
 - **v1.0 (2026-10-21):** Initial build from the SAO vol 1 test.
