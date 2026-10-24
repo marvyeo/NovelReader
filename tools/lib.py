@@ -32,5 +32,5 @@ def st(id, c, state, label=''):
     person(id)['status'].append([c, state, label])
 def term(kind, name, at, text):
     assert kind in ('concept', 'creature', 'item', 'place'), kind
-    P['terms'].append(dict(kind=kind, name=name, at=at, text=text))
-def tl(at, when, what): P['timeline'].append(dict(at=at, when=when, what=what))
+    P['terms'].append(dict(kind=kind, name=name, at=int(at), text=text))
+def tl(at, when, what): P['timeline'].append(dict(at=int(at), when=when, what=what))
