@@ -3,6 +3,8 @@
 > **Next chat name: `NovelReader ver 37`**
 > Claude: your FIRST reply in a new chat must start with "Rename this chat to: **NovelReader ver N**" (always the number on the Next chat name line) (you can't rename chats yourself). In your first commit this session, bump the number here by 1.
 
+> **▶ RESUME HERE (ver 37):** Side project, manga-from-anime list. Done: ~500 titles in `manga-packs/src/*.txt`, built to `manga-packs/manga-anime-pack.json` (`cd manga-packs && python3 build.py`). Next: gap-filling pass per letter (target ~1,200 TV anime from manga, 1997-2026), verified against a source if possible; write only real entries (no placeholder lines); fill `total` where known. Then Marvin imports the pack in the app's manga catalog. Separate open items: manga step 3 (his title list, ComicsTracker port) and the next novel series (Accel World vol 1 or High School DxD vol 1). Restart prompt: "Continue NovelReader ver 37 from RESUME HERE". Delete this block when done.
+
 **State version:** 34 (SAO vol 28 notes done 2026-10-24 in "NovelReader ver 34"; SAO vol 27 notes done 2026-10-24 in "NovelReader ver 33"; SAO vol 26 notes done 2026-10-24 in "NovelReader ver 32"; SAO vol 25 notes done 2026-10-24 in "NovelReader ver 31"; SAO vol 24 notes done 2026-10-24 in "NovelReader ver 29"/"ver 30"; SAO vol 23 notes done 2026-10-24 in "NovelReader ver 28"; vol 22 in ver 27; vol 21 in ver 26; token diagnosis + `nr_tools` built in ver 25; SAO vol 20 notes done in ver 24; vols 2-19 done in earlier chats, older details in `PROJECT_STATE-archive-ver23.md`)
 **Where this lives:** `PROJECT_STATE.md` in the repo (root; folder copy in LightNovels should match). New chats `git pull` and read it; no uploads needed.
 
