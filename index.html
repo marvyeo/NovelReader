@@ -98,6 +98,11 @@ details.chap summary::-webkit-details-marker{display:none}
 .cbody ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px}
 .search{margin-top:14px;width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:8px;margin-top:10px}
+.vol{border:1px dashed var(--line);background:var(--sunk);color:var(--muted);border-radius:10px;padding:12px 0;font:600 15px var(--f-mono)}
+.vol.have{border:1px solid var(--accent);background:var(--accent);color:#fff}
+.form{display:grid;gap:10px}.form label{display:grid;gap:4px;font-size:13px;color:var(--muted)}.form input,.form select{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:9px;font:15px var(--f-body)}.form .chk{display:flex;align-items:center;gap:8px}
 .chip{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:5px 12px;font:500 13px var(--f-body)}
 .chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:12px;margin-top:14px}
@@ -259,6 +264,7 @@ function coverEl(s, v, cls = 'cover') {
 /* ============================== VIEWS ============================== */
 function go(view, args = {}) { ROUTE = { view, ...args }; FILTER = { group: 'All', kind: 'All', q: '' }; render(); window.scrollTo(0, 0); }
 function crumbs() {
+  if (ROUTE.view === 'manga' || ROUTE.view === 'mseries') return `<nav class="crumbs"><a class="lp-back" href="https://marvyeo.github.io/LifePlan/" aria-label="Back to Life Plan">← Life Plan</a><span class="sep">|</span><button onclick="go('library')">Library</button><span class="sep">/</span>${ROUTE.view === 'manga' ? '<span class="eyebrow">Manga</span>' : `<button onclick="go('manga')">Manga</button>`}</nav>`;
   const s = ROUTE.sid && getSeries(ROUTE.sid);
   const parts = [`<button onclick="go('library')">Library</button>`];
   if (s && ROUTE.view !== 'series') parts.push(`<span class="sep">/</span><button onclick="go('series',{sid:'${s.id}'})">${esc(s.title)}</button>`);
@@ -278,6 +284,7 @@ function viewLibrary() {
       <div class="sub">${owned} of ${total} owned · ${done} with notes</div>
       <div class="sub">${p.v ? `Up to volume ${p.v}` : 'Not started'}</div></div></button>`;
   }).join('') + `</div>`;
+  const mg = data.manga; h += `<h3>Manga</h3><button class="scard" style="grid-template-columns:1fr" onclick="go('manga')"><div class="t">Manga catalog</div><div class="sub">${mg.length} series · ${mg.reduce((a, m) => a + m.owned.length, 0)} volumes collected</div></button>`;
   h += `<h3>Add notes</h3><div class="row"><button class="btn" onclick="$('#pack-input').click()">Import volume pack</button><span class="sub">Packs are the .json files Claude makes from your books.</span></div>`;
   return h;
 }
@@ -418,13 +425,86 @@ const $ = s => document.querySelector(s);
 function render(keepScroll) {
   const y = window.scrollY, focused = document.activeElement && document.activeElement.id;
   const app = $('#app');
-  app.innerHTML = ROUTE.view === 'library' ? viewLibrary() : ROUTE.view === 'series' ? viewSeries() : ROUTE.view === 'volume' ? viewVolume() : viewCharacter();
+  app.innerHTML = ROUTE.view === 'library' ? viewLibrary() : ROUTE.view === 'manga' ? viewManga() : ROUTE.view === 'mseries' ? viewMSeries() : ROUTE.view === 'series' ? viewSeries() : ROUTE.view === 'volume' ? viewVolume() : viewCharacter();
   const q = $('#q');
   if (q) q.addEventListener('input', e => { FILTER.q = e.target.value; render(true); });
   if (focused === 'q' && q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
   if (focused && focused.startsWith('gate') && $('#' + focused)) $('#' + focused).focus();
   if (keepScroll) window.scrollTo(0, y);
   hydrateImages();
+}
+
+/* ============================== MANGA ============================== */
+const MSTATUS = { stopped: 'Stopped midway', anime: 'Anime ended', new: 'Not started', reading: 'Reading', done: 'Finished' };
+const getManga = id => data.manga.find(m => m.id === id);
+const slug = t => fold(t).trim().replace(/ +/g, '-') || uid();
+// "1-5, 7, 9-10" -> [1,2,3,4,5,7,9,10]
+function parseRange(x) {
+  if (Array.isArray(x)) return x.map(Number).filter(n => n > 0);
+  const out = []; String(x || '').split(',').forEach(p => { const m = p.trim().match(/^(\d+)(?:\s*-\s*(\d+))?$/); if (m) for (let i = +m[1]; i <= +(m[2] || m[1]); i++) out.push(i); });
+  return out;
+}
+function upsertManga(i) {
+  const id = i.id || slug(i.title); let m = getManga(id);
+  if (!m) { m = { id, title: i.title, author: '', status: 'new', stopAt: '', total: 0, ongoing: false, note: '', owned: [] }; data.manga.push(m); }
+  for (const k of ['title', 'author', 'status', 'stopAt', 'note']) if (i[k] != null) m[k] = i[k];
+  if (i.total != null) m.total = +i.total || 0;
+  if (i.ongoing != null) m.ongoing = !!i.ongoing;
+  if (i.owned != null) m.owned = [...new Set(parseRange(i.owned))].sort((a, b) => a - b);
+  data.manga.sort((a, b) => a.title.localeCompare(b.title));
+  return m;
+}
+function viewManga() {
+  const f = FILTER.group;
+  const list = data.manga.filter(m => f === 'All' || m.status === f);
+  let h = crumbs() + `<h1>Manga</h1><p class="sub">${data.manga.length} series · ${data.manga.reduce((a, m) => a + m.owned.length, 0)} volumes collected</p>`;
+  h += `<div class="chips">${['All', ...Object.keys(MSTATUS)].map(k => `<button class="chip" aria-pressed="${f === k}" onclick="FILTER.group='${k}';render(true)">${k === 'All' ? 'All' : MSTATUS[k]}</button>`).join('')}</div>`;
+  h += list.length ? `<div class="lib">` + list.map(m => {
+    const o = m.owned.length;
+    return `<button class="scard" style="grid-template-columns:1fr" onclick="go('mseries',{mid:'${m.id}'})"><div class="t">${esc(m.title)}</div><div class="sub">${esc(m.author)}</div>
+      <div class="meter" aria-hidden="true"><i style="width:${m.total ? Math.min(100, o / m.total * 100) : 0}%"></i></div>
+      <div class="sub">${o}${m.total ? ' of ' + m.total + (m.ongoing ? '+' : '') : ''} owned</div>
+      <div class="sub"><span class="tag ${m.status === 'done' ? 'ok' : 'miss'}">${MSTATUS[m.status] || m.status}</span>${m.stopAt ? ' · pick up at ' + esc(m.stopAt) : ''}</div></button>`;
+  }).join('') + `</div>` : `<p class="empty">${data.manga.length ? 'No series with that status.' : 'No manga yet. Add one below or import a list.'}</p>`;
+  h += `<h3>Add</h3><div class="row"><button class="btn primary" onclick="mangaForm()">Add a series</button><button class="btn" onclick="$('#pack-input').click()">Import a list (.json)</button></div>`;
+  return h;
+}
+function mangaForm(id) {
+  const m = id ? getManga(id) : { title: '', author: '', status: 'stopped', stopAt: '', total: '', note: '', ongoing: false };
+  sheet(`<h2>${id ? 'Edit' : 'Add'} series</h2><form onsubmit="saveMangaForm(event,'${id || ''}')" class="form">
+    <label>Title<input name="title" required value="${esc(m.title)}"></label>
+    <label>Author<input name="author" value="${esc(m.author)}"></label>
+    <label>Status<select name="status">${Object.entries(MSTATUS).map(([k, l]) => `<option value="${k}" ${m.status === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
+    <label>Pick up at (e.g. "vol 8" or "after anime S2, vol 12 ch 98")<input name="stopAt" value="${esc(m.stopAt)}"></label>
+    <label>Total volumes (blank if unknown)<input name="total" type="number" min="0" value="${m.total || ''}"></label>
+    <label class="chk"><input type="checkbox" name="ongoing" ${m.ongoing ? 'checked' : ''}> Still ongoing</label>
+    <label>Note<input name="note" value="${esc(m.note)}"></label>
+    <div class="row"><button class="btn primary" type="submit">Save</button><button class="btn" type="button" onclick="closeSheet()">Cancel</button>${id ? `<button class="btn" type="button" onclick="delManga('${id}')">Delete</button>` : ''}</div></form>`);
+}
+function saveMangaForm(e, id) {
+  e.preventDefault(); const f = new FormData(e.target);
+  const m = upsertManga({ id: id || undefined, title: f.get('title').trim(), author: f.get('author').trim(), status: f.get('status'), stopAt: f.get('stopAt').trim(), total: f.get('total') || 0, ongoing: f.get('ongoing') === 'on', note: f.get('note').trim() });
+  closeSheet(); save(); if (ROUTE.view === 'mseries') render(true); else go('mseries', { mid: m.id });
+}
+function delManga(id) { if (!confirm('Delete this series from the catalog?')) return; data.manga = data.manga.filter(m => m.id !== id); closeSheet(); save(); go('manga'); }
+function toggleVol(id, n) {
+  const m = getManga(id), i = m.owned.indexOf(n);
+  if (i < 0) m.owned.push(n); else m.owned.splice(i, 1);
+  m.owned.sort((a, b) => a - b); save(); render(true);
+}
+function ownRange(id) {
+  const m = getManga(id), r = prompt('Mark owned, e.g. 1-8, 10 (adds to what you have)', ''); if (!r) return;
+  m.owned = [...new Set([...m.owned, ...parseRange(r)])].sort((a, b) => a - b); save(); render(true);
+}
+function viewMSeries() {
+  const m = getManga(ROUTE.mid), top = Math.max(m.total, ...m.owned, 0);
+  const miss = []; for (let i = 1; i <= m.total; i++) if (!m.owned.includes(i)) miss.push(i);
+  let h = crumbs() + `<div class="eyebrow">Manga · ${MSTATUS[m.status] || m.status}</div><h1>${esc(m.title)}</h1><div class="sub">${esc(m.author)}</div>
+    <div class="stats"><span><b>${m.owned.length}${m.total ? '/' + m.total : ''}</b>owned</span><span><b>${m.total ? miss.length : '?'}</b>to get</span></div>
+    ${m.stopAt ? `<p class="sub" style="margin-top:8px"><b>Pick up at:</b> ${esc(m.stopAt)}</p>` : ''}${m.note ? `<p class="sub">${esc(m.note)}</p>` : ''}
+    <div class="row" style="margin-top:10px"><button class="btn" onclick="mangaForm('${m.id}')">Edit</button><button class="btn" onclick="ownRange('${m.id}')">Mark a range owned</button></div>`;
+  h += `<h3>Volumes</h3>` + (top ? `<div class="vgrid">${Array.from({ length: top }, (_, i) => i + 1).map(n => `<button class="vol ${m.owned.includes(n) ? 'have' : ''}" aria-pressed="${m.owned.includes(n)}" aria-label="Volume ${n}" onclick="toggleVol('${m.id}',${n})">${n}</button>`).join('')}</div><p class="hidden-note">Tap a number to mark it owned or not.${m.total ? '' : ' Set the total volumes in Edit to see what is missing.'}</p>` : `<p class="empty">Set the total volumes in Edit to get the grid.</p>`);
+  return h;
 }
 
 /* ============================== PICTURES ============================== */
@@ -510,6 +590,7 @@ async function importPack(j) {
     s.volumes.sort((a, b) => a.n - b.n);
     return;
   }
+  if (j.format === 'novelreader-manga') { for (const m of j.manga) upsertManga(m); return; }
   if (j.format !== 'novelreader-volume') throw new Error('Not a NovelReader pack');
   const s = upsertSeries(j.series);
   let v = s.volumes.find(x => x.n === j.volume.n);
@@ -596,7 +677,7 @@ async function uploadBlob(name, blob, mime, existingId) {
   form.append('file', blob);
   return (await (await dfetch(`${UPLOAD}?uploadType=multipart&fields=id`, { method: 'POST', body: form })).json()).id;
 }
-function normalise(d) { d = d || {}; d.app = 'novelreader'; d.version = 1; d.series = d.series || []; d.progress = d.progress || {}; d.art = d.art || []; d.upcoming = []; return d; }
+function normalise(d) { d = d || {}; d.app = 'novelreader'; d.version = 1; d.series = d.series || []; d.progress = d.progress || {}; d.art = d.art || []; d.manga = d.manga || []; d.upcoming = []; return d; }
 let saving = null;
 async function save() {
   if (DEMO) return;
@@ -620,6 +701,7 @@ async function start() {
 }
 function route() {
   const h = location.hash.slice(1);
+  if (h.startsWith('manga')) { const id = h.slice(6); ROUTE = getManga(id) ? { view: 'mseries', mid: id } : { view: 'manga' }; return; }
   const m = h.match(/^(series|vol|char)-([a-z0-9]+)(?:-([a-z0-9]+))?$/);
   if (!m || !getSeries(m[2])) return;
   if (m[1] === 'series') ROUTE = { view: 'series', sid: m[2] };
