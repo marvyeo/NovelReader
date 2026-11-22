@@ -2,6 +2,14 @@
 "format": "novelreader-manga",
 "manga": [
 {
+"title": "3-gatsu no Lion",
+"author": "Chika Umino",
+"status": "new",
+"total": 17,
+"ongoing": true,
+"note": "Anime: 2016–2018 · Manga: 2007–present"
+},
+{
 "title": "A Certain Magical Index",
 "author": "Kazuma Kamachi/Chuya Kogino",
 "status": "new",
@@ -194,6 +202,14 @@
 "note": "Anime: 2016 · Manga: 2013–2017"
 },
 {
+"title": "The Ancient Magus Bride",
+"author": "Kore Yamazaki",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2017–2018; 2023 · Manga: 2013–present"
+},
+{
 "title": "Angelic Layer",
 "author": "CLAMP",
 "status": "new",
@@ -242,6 +258,14 @@
 "note": "Anime: 2015 · Manga: 2009–2018"
 },
 {
+"title": "The Apothecary Diaries",
+"author": "Natsu Hyuuga (manga adapt)",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2023– · Manga: 2017–present"
+},
+{
 "title": "Aquarion",
 "author": "Original (manga adapt)",
 "status": "new",
@@ -264,6 +288,14 @@
 "total": 21,
 "ongoing": false,
 "note": "Anime: 2013 · Manga: 2008–2019"
+},
+{
+"title": "Area 88",
+"author": "Kaoru Shintani",
+"status": "new",
+"total": 23,
+"ongoing": false,
+"note": "Anime: 2004 · Manga: 1979–1986"
 },
 {
 "title": "Aria",
@@ -594,6 +626,14 @@
 "note": "Anime: 2017–2021 · Manga: 2015–present"
 },
 {
+"title": "Black Jack",
+"author": "Osamu Tezuka",
+"status": "new",
+"total": 25,
+"ongoing": false,
+"note": "Anime: 2004–2006 · Manga: 1973–1983"
+},
+{
 "title": "Black Lagoon",
 "author": "Rei Hiroe",
 "status": "new",
@@ -786,6 +826,14 @@
 "note": "Anime: 2017–2023 · Manga: 2016–present"
 },
 {
+"title": "Boruto: Naruto Next Generations",
+"author": "Ukyo Kodachi/Mikio Ikemoto",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2017–2023 · Manga: 2016–present"
+},
+{
 "title": "Brave10",
 "author": "Kairi Shimotsuki",
 "status": "new",
@@ -800,6 +848,14 @@
 "total": 0,
 "ongoing": false,
 "note": "Anime: 2014 · Manga: 2012–2016"
+},
+{
+"title": "Bungaku Shoujo",
+"author": "Mizuki Nomura",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2010 · Manga: 2007–2010"
 },
 {
 "title": "Bungo Stray Dogs",
@@ -944,6 +1000,14 @@
 "total": 27,
 "ongoing": false,
 "note": "Anime: 2007 · Manga: 2001–2014"
+},
+{
+"title": "Code:Breaker",
+"author": "Akimine Kamijyo",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2012 · Manga: 2008–2013"
 },
 {
 "title": "Comic Girls",
@@ -1170,6 +1234,14 @@
 "note": "Anime: 2019–2025 · Manga: 2017–2022"
 },
 {
+"title": "Dragon Ball Kai",
+"author": "Akira Toriyama",
+"status": "new",
+"total": 42,
+"ongoing": false,
+"note": "Anime: 2009–2011; 2014–2015 · Manga: 1984–1995"
+},
+{
 "title": "Dragon Ball Super",
 "author": "Akira Toriyama/Toyotarou",
 "status": "new",
@@ -1218,12 +1290,28 @@
 "note": "Anime: 2021–2023 · Manga: 2018–present"
 },
 {
+"title": "Elemental Gelade",
+"author": "Mayumi Azuma",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2005 · Manga: 2002–2007"
+},
+{
 "title": "Elfen Lied",
 "author": "Lynn Okamoto",
 "status": "new",
 "total": 12,
 "ongoing": false,
 "note": "Anime: 2004 · Manga: 2002–2005"
+},
+{
+"title": "The Elusive Samurai",
+"author": "Yusei Matsui",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2024 · Manga: 2021–present"
 },
 {
 "title": "Emma: A Victorian Romance",
@@ -1338,12 +1426,28 @@
 "note": "Anime: 2003–2004; 2009–2010 · Manga: 2001–2010"
 },
 {
+"title": "Fullmetal Alchemist: Brotherhood",
+"author": "Hiromu Arakawa",
+"status": "new",
+"total": 27,
+"ongoing": false,
+"note": "Anime: 2009–2010 · Manga: 2001–2010"
+},
+{
 "title": "Fumetsu no Anata e",
 "author": "Yoshitoki Oima",
 "status": "new",
 "total": 20,
 "ongoing": false,
 "note": "Anime: 2021–2022 · Manga: 2016–2024"
+},
+{
+"title": "Fushigi Yuugi",
+"author": "Yuu Watase",
+"status": "new",
+"total": 18,
+"ongoing": false,
+"note": "Anime: 1995–1996 · Manga: 1992–1996"
 },
 {
 "title": "Fuuka",
@@ -2066,6 +2170,14 @@
 "note": "Anime: 2012–2024 · Manga: 2006–present"
 },
 {
+"title": "Kirarin Revolution",
+"author": "Tsukushi/Chiaki Yoshii",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2006–2009 · Manga: 2006–2009"
+},
+{
 "title": "Kiseijuu",
 "author": "Hitoshi Iwaaki",
 "status": "new",
@@ -2410,6 +2522,14 @@
 "note": "Anime: 2012 · Manga: 2009–2013"
 },
 {
+"title": "Mermaid Melody Pichi Pichi Pitch",
+"author": "Pink Hanamori/Michiko Yokote",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2003–2004 · Manga: 2002–2005"
+},
+{
 "title": "Midori Days",
 "author": "Kazurou Inoue",
 "status": "new",
@@ -2538,6 +2658,14 @@
 "note": "Anime: 2022– · Manga: 2018–present"
 },
 {
+"title": "My Happy Marriage",
+"author": "Akumi Agitogi/Tsukiho Tsukioka",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2023– · Manga: 2019–present"
+},
+{
 "title": "My Love Story!!",
 "author": "Kazune Kawahara/Aruko",
 "status": "new",
@@ -2554,12 +2682,1324 @@
 "note": "Anime: 2021 · Manga: 2019–present"
 },
 {
+"title": "Nabari no Ou",
+"author": "Yuhki Kamatani",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2008 · Manga: 2005–2011"
+},
+{
+"title": "Nagasarete Airantou",
+"author": "Ryuki Kuroya",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2007 · Manga: 2004–2011"
+},
+{
+"title": "Nana",
+"author": "Ai Yazawa",
+"status": "new",
+"total": 21,
+"ongoing": false,
+"note": "Anime: 2006–2007 · Manga: 2000–2009 (hiatus)"
+},
+{
+"title": "Nanatsu no Taizai (The Seven Deadly Sins)",
+"author": "Nakaba Suzuki",
+"status": "new",
+"total": 41,
+"ongoing": false,
+"note": "Anime: 2014–2021 · Manga: 2012–2020"
+},
+{
+"title": "Naruto",
+"author": "Masashi Kishimoto",
+"status": "new",
+"total": 72,
+"ongoing": false,
+"note": "Anime: 2002–2007; 2007–2017 · Manga: 1999–2014"
+},
+{
+"title": "Natsu no Arashi!",
+"author": "Jin Kobayashi",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2009 · Manga: 2004–2008"
+},
+{
+"title": "Natsume's Book of Friends",
+"author": "Yuki Midorikawa",
+"status": "new",
+"total": 32,
+"ongoing": true,
+"note": "Anime: 2008–2017; 2024 · Manga: 2003–present"
+},
+{
+"title": "Neon Genesis Evangelion",
+"author": "Yoshiyuki Sadamoto",
+"status": "new",
+"total": 14,
+"ongoing": false,
+"note": "Anime: 1995–1996 · Manga: 1994–2013"
+},
+{
+"title": "Net-juu no Susume",
+"author": "Tsukako Aoi",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2017 · Manga: 2013–2018"
+},
+{
+"title": "New Game!",
+"author": "Shotaro Tokuno",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2016–2017 · Manga: 2013–present"
+},
+{
+"title": "Nichijou",
+"author": "Keiichi Arawi",
+"status": "new",
+"total": 10,
+"ongoing": false,
+"note": "Anime: 2011 · Manga: 2006–2015"
+},
+{
+"title": "Nijiiro Days",
+"author": "Mikimiki",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2016 · Manga: 2012–2019"
+},
+{
+"title": "Nisekoi",
+"author": "Naoshi Komi",
+"status": "new",
+"total": 25,
+"ongoing": false,
+"note": "Anime: 2014–2015 · Manga: 2011–2016"
+},
+{
+"title": "Nobunagun",
+"author": "Shimoku Kio",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2014 · Manga: 2012–2016"
+},
+{
+"title": "Nodame Cantabile",
+"author": "Tomoko Ninomiya",
+"status": "new",
+"total": 25,
+"ongoing": false,
+"note": "Anime: 2007–2010 · Manga: 2001–2009"
+},
+{
+"title": "Noragami",
+"author": "Adachitoka",
+"status": "new",
+"total": 27,
+"ongoing": false,
+"note": "Anime: 2014–2015 · Manga: 2010–2022"
+},
+{
+"title": "Nurarihyon no Mago",
+"author": "Hiroshi Shiibashi",
+"status": "new",
+"total": 25,
+"ongoing": false,
+"note": "Anime: 2010–2011 · Manga: 2008–2012"
+},
+{
+"title": "One Outs",
+"author": "Shinobu Kaitani",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2008–2009 · Manga: 1998–2006"
+},
+{
+"title": "One Piece",
+"author": "Eiichiro Oda",
+"status": "new",
+"total": 114,
+"ongoing": true,
+"note": "Anime: 1999- · Manga: 1997–present"
+},
+{
+"title": "One Punch Man",
+"author": "ONE/Yusuke Murata",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2015; 2019; 2025 · Manga: 2012–present"
+},
+{
+"title": "Ookiku Furikabutte",
+"author": "Asa Higuchi",
+"status": "new",
+"total": 17,
+"ongoing": true,
+"note": "Anime: 2007 · Manga: 2003–present"
+},
+{
+"title": "Orange",
+"author": "Ichigo Takano",
+"status": "new",
+"total": 6,
+"ongoing": false,
+"note": "Anime: 2016 · Manga: 2012–2015"
+},
+{
+"title": "Oreimo",
+"author": "Tsukasa Fushimi/Sakura Ikeda (manga adapt)",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2010–2013 · Manga: 2009–present"
+},
+{
+"title": "Oresama Teacher",
+"author": "Izumi Tsubaki",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2010–2012; 2013 · Manga: 2007–2016"
+},
+{
+"title": "Orient",
+"author": "Shinobu Ohtaka",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2022; 2024 · Manga: 2018–present"
+},
+{
+"title": "Oshiete Galko-chan",
+"author": "Tamaki Wonderland",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2016 · Manga: 2014–2019"
+},
+{
+"title": "Osomatsu-san",
+"author": "Fujio Akatsuka",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2015–2017; 2022 · Manga: 1962–1969"
+},
+{
+"title": "Otome Game no Hametsu Flag",
+"author": "Satoru Yamaguchi",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2020 · Manga: 2016–present"
+},
+{
+"title": "Otoyomegatari",
+"author": "Kaoru Mori",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2020 (ONA) · Manga: 2008–present"
+},
+{
 "title": "Ouran High School Host Club",
 "author": "Bisco Hatori",
 "status": "new",
 "total": 18,
 "ongoing": false,
 "note": "Anime: 2006 · Manga: 2002–2010"
+},
+{
+"title": "Overlord",
+"author": "Kugane Maruyama/Hugin Miyama (manga adapt)",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2015- · Manga: 2014–present"
+},
+{
+"title": "Pandora Hearts",
+"author": "Jun Mochizuki",
+"status": "new",
+"total": 24,
+"ongoing": false,
+"note": "Anime: 2009 · Manga: 2006–2015"
+},
+{
+"title": "Pani Poni Dash!",
+"author": "Hekiru Hikawa",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2005 · Manga: 2000–2006"
+},
+{
+"title": "Paradise Kiss",
+"author": "Ai Yazawa",
+"status": "new",
+"total": 5,
+"ongoing": false,
+"note": "Anime: 2005 · Manga: 2000–2003"
+},
+{
+"title": "Parasyte",
+"author": "Hitoshi Iwaaki",
+"status": "new",
+"total": 10,
+"ongoing": false,
+"note": "Anime: 2014–2015 · Manga: 1988–1995"
+},
+{
+"title": "Pastel",
+"author": "Ichigo Takano",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2019 · Manga: 2007–2008"
+},
+{
+"title": "Peacemaker Kurogane",
+"author": "Nanae Kurono (manga/adapt)",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2003–2004 · Manga: 2000–2005"
+},
+{
+"title": "Peach Boy Riverside",
+"author": "Coolkyoushinja",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2021 · Manga: 2021–present"
+},
+{
+"title": "Peach Girl",
+"author": "Miwa Ueda",
+"status": "new",
+"total": 18,
+"ongoing": false,
+"note": "Anime: 2005–2006 · Manga: 1998–2004"
+},
+{
+"title": "Pet Shop of Horrors",
+"author": "Matsuri Akino",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 1999 · Manga: 1996–1999"
+},
+{
+"title": "Pita-Ten",
+"author": "Kōji Kumeta",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2002 · Manga: 1999–2002"
+},
+{
+"title": "Planet With",
+"author": "Satoshi Mizukami",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2018 · Manga: 2017–2019"
+},
+{
+"title": "Planetes",
+"author": "Makoto Yukimura",
+"status": "new",
+"total": 4,
+"ongoing": false,
+"note": "Anime: 1999–2000 · Manga: 1999–2004"
+},
+{
+"title": "Platinum End",
+"author": "Tsugumi Ohba/Takeshi Obata",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2021–2022 · Manga: 2015–2021"
+},
+{
+"title": "Please Save My Earth",
+"author": "Saki Hiwatari",
+"status": "new",
+"total": 21,
+"ongoing": false,
+"note": "Anime: 1993 · Manga: 1987–1994"
+},
+{
+"title": "Prince of Tennis",
+"author": "Takeshi Konomi",
+"status": "new",
+"total": 42,
+"ongoing": false,
+"note": "Anime: 2001–2005 · Manga: 1999–2008"
+},
+{
+"title": "Princess Princess",
+"author": "Mikiyo Tsuda",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2006 · Manga: 2002–2008"
+},
+{
+"title": "Princess Resurrection",
+"author": "Yasunori Mitsunaga",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2007 · Manga: 2005–2010"
+},
+{
+"title": "Prison School",
+"author": "Akira Hiramoto",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2015 · Manga: 2011–2017"
+},
+{
+"title": "The Promised Neverland",
+"author": "Kaiu Shirai/Posuka Demizu",
+"status": "new",
+"total": 20,
+"ongoing": false,
+"note": "Anime: 2019; 2021 · Manga: 2016–2020"
+},
+{
+"title": "Psyren",
+"author": "Toshiaki Iwashiro",
+"status": "new",
+"total": 16,
+"ongoing": false,
+"note": "Anime: 2012 (?) · Manga: 2007–2010"
+},
+{
+"title": "The Quintessential Quintuplets",
+"author": "Negi Haruba",
+"status": "new",
+"total": 14,
+"ongoing": false,
+"note": "Anime: 2019; 2021 · Manga: 2017–2020"
+},
+{
+"title": "Radiant",
+"author": "Tony Valente",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2018–2019 · Manga: 2013–2021"
+},
+{
+"title": "Rainbow Days",
+"author": "Mina Mikami",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2016 · Manga: 2011–2018"
+},
+{
+"title": "Rainbow: Nisha Rokubou no Shichinin",
+"author": "George Abe/Masasumi Kakizaki",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2010 · Manga: 2002–2010"
+},
+{
+"title": "Ranking of Kings",
+"author": "Sosuke Toka",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2021–2023 · Manga: 2017–2021"
+},
+{
+"title": "Ranma 1/2",
+"author": "Rumiko Takahashi",
+"status": "new",
+"total": 38,
+"ongoing": false,
+"note": "Anime: 1989–1992; 2024– · Manga: 1987–1996"
+},
+{
+"title": "Rave Master",
+"author": "Hiro Mashima",
+"status": "new",
+"total": 35,
+"ongoing": false,
+"note": "Anime: 2001–2002 · Manga: 1999–2005"
+},
+{
+"title": "Re-Kan!",
+"author": "Mari Okada",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2013 · Manga: 2009–2013"
+},
+{
+"title": "Record of Ragnarok",
+"author": "Shinya Umemura/Takumi Fukui",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2021–2023 · Manga: 2017–present"
+},
+{
+"title": "Rent-a-Girlfriend",
+"author": "Reiji Miyajima",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2020– · Manga: 2017–present"
+},
+{
+"title": "Rokudenashi Blues",
+"author": "Masanori Morita",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 1992–1993 · Manga: 1988–1997"
+},
+{
+"title": "Rosario + Vampire",
+"author": "Akihisa Ikeda",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2008–2009 · Manga: 2004–2014"
+},
+{
+"title": "Rozen Maiden",
+"author": "Peach-Pit",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2004–2006; 2013 · Manga: 2002–2014"
+},
+{
+"title": "Rurouni Kenshin",
+"author": "Nobuhiro Watsuki",
+"status": "new",
+"total": 28,
+"ongoing": false,
+"note": "Anime: 1996–1998; 2023–2025 · Manga: 1994–1999"
+},
+{
+"title": "Saiki Kusuo no Psi-nan",
+"author": "Shuuichi Aso",
+"status": "new",
+"total": 26,
+"ongoing": false,
+"note": "Anime: 2016–2019 · Manga: 2012–2018"
+},
+{
+"title": "Sailor Moon",
+"author": "Naoko Takeuchi",
+"status": "new",
+"total": 18,
+"ongoing": false,
+"note": "Anime: 1992–1997 · Manga: 1991–1997"
+},
+{
+"title": "Saint Seiya",
+"author": "Masami Kurumada",
+"status": "new",
+"total": 28,
+"ongoing": false,
+"note": "Anime: 1986–1989 · Manga: 1986–1990"
+},
+{
+"title": "Saiyuki Reload",
+"author": "Kazuya Minekura",
+"status": "new",
+"total": 9,
+"ongoing": true,
+"note": "Anime: 2003 · Manga: 1997–present"
+},
+{
+"title": "Sakamoto Days",
+"author": "Yuto Suzuki",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2025- · Manga: 2020–present"
+},
+{
+"title": "Samurai Deeper Kyo",
+"author": "Akimine Kamijyo",
+"status": "new",
+"total": 38,
+"ongoing": false,
+"note": "Anime: 2002–2003 · Manga: 1999–2006"
+},
+{
+"title": "Sankarea",
+"author": "Mitsuru Hattori",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2012 · Manga: 2009–2015"
+},
+{
+"title": "Sasameki Koto",
+"author": "Takashi Ikeda",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2009 · Manga: 2006–2008"
+},
+{
+"title": "Sayonara Zetsubou Sensei",
+"author": "Koji Kumeta",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2007–2009 · Manga: 2005–2012"
+},
+{
+"title": "School Rumble",
+"author": "Jin Kobayashi",
+"status": "new",
+"total": 22,
+"ongoing": false,
+"note": "Anime: 2004–2006 · Manga: 2002–2008"
+},
+{
+"title": "Scum's Wish",
+"author": "Mengo Yokoyari",
+"status": "new",
+"total": 8,
+"ongoing": false,
+"note": "Anime: 2017 · Manga: 2012–2017"
+},
+{
+"title": "Seitokai Yakuindomo",
+"author": "Tozen Ujiie",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2010; 2014 · Manga: 2006–2022"
+},
+{
+"title": "Sekirei",
+"author": "Sakurako Gokurakuin",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2008; 2010 · Manga: 2005–2018"
+},
+{
+"title": "Seraph of the End",
+"author": "Takaya Kagami/Yamato Yamamoto",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2015 · Manga: 2012–present"
+},
+{
+"title": "Servant x Service",
+"author": "Karino Takatsu",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2013 · Manga: 2009–2013"
+},
+{
+"title": "Seto no Hanayome",
+"author": "Tahiko Kimura",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2007 · Manga: 2003–2011"
+},
+{
+"title": "Sgt. Frog",
+"author": "Mine Yoshizaki",
+"status": "new",
+"total": 30,
+"ongoing": true,
+"note": "Anime: 2004–2011 · Manga: 1999–present"
+},
+{
+"title": "Shaman King",
+"author": "Hiroyuki Takei",
+"status": "new",
+"total": 32,
+"ongoing": false,
+"note": "Anime: 2001–2002; 2021–2022 · Manga: 1998–2004"
+},
+{
+"title": "Shigurui",
+"author": "Takayuki Yamaguchi",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2007 · Manga: 2003–2010"
+},
+{
+"title": "Shiki",
+"author": "Fuyumi Ono/Ryu Fujisaki",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2010 · Manga: 2007–2013"
+},
+{
+"title": "Shokugeki no Soma",
+"author": "Yuto Tsukuda/Shun Saeki",
+"status": "new",
+"total": 36,
+"ongoing": false,
+"note": "Anime: 2015–2020 · Manga: 2012–2019"
+},
+{
+"title": "Shugo Chara!",
+"author": "Peach-Pit",
+"status": "new",
+"total": 12,
+"ongoing": false,
+"note": "Anime: 2007–2009 · Manga: 2006–2010"
+},
+{
+"title": "Shuumatsu no Valkyrie (Record of Ragnarok)",
+"author": "Shinya Umemura/Takumi Fukui",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2021–2023 · Manga: 2017–present"
+},
+{
+"title": "Silver Spoon",
+"author": "Hiromu Arakawa",
+"status": "new",
+"total": 15,
+"ongoing": false,
+"note": "Anime: 2013–2014 · Manga: 2011–2019"
+},
+{
+"title": "Sing Yesterday for Me",
+"author": "Kei Toume",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2021 · Manga: 1998–2005"
+},
+{
+"title": "Sket Dance",
+"author": "Kenta Shinohara",
+"status": "new",
+"total": 32,
+"ongoing": false,
+"note": "Anime: 2011–2013 · Manga: 2007–2013"
+},
+{
+"title": "Skip Beat!",
+"author": "Yoshiki Nakamura",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2008–2009 · Manga: 2002–present"
+},
+{
+"title": "Skull-face Bookseller Honda-san",
+"author": "Honda",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2018 · Manga: 2013–2018"
+},
+{
+"title": "Slam Dunk",
+"author": "Takehiko Inoue",
+"status": "new",
+"total": 31,
+"ongoing": false,
+"note": "Anime: 1993–1996 · Manga: 1990–1996"
+},
+{
+"title": "Snow White with the Red Hair",
+"author": "Sorata Akiduki",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2015–2016 · Manga: 2006–2018"
+},
+{
+"title": "Sora no Otoshimono",
+"author": "Suu Minazuki",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2009; 2010 · Manga: 2007–2016"
+},
+{
+"title": "Soredemo Machi wa Mawatteiru",
+"author": "Hiroshi Ishizuka",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2010 · Manga: 2005–2016"
+},
+{
+"title": "Soul Eater",
+"author": "Atsushi Ohkubo",
+"status": "new",
+"total": 25,
+"ongoing": false,
+"note": "Anime: 2008–2009 · Manga: 2004–2013"
+},
+{
+"title": "Space Brothers",
+"author": "Chuya Koyama",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2012–2014 · Manga: 2007–present"
+},
+{
+"title": "Spice and Wolf",
+"author": "Isuna Hasekura/Keito Koume (manga adapt)",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2008; 2009 · Manga: 2006–present"
+},
+{
+"title": "Spriggan",
+"author": "Hiroshi Takashige/Ryoji Minagawa",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2022 · Manga: 1989–1996"
+},
+{
+"title": "Spy x Family",
+"author": "Tatsuya Endo",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2022– · Manga: 2019–present"
+},
+{
+"title": "Squid Girl",
+"author": "Masahiro Anbe",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2010; 2011 · Manga: 2007–2014"
+},
+{
+"title": "Sunshine Sketch",
+"author": "Ume Aoki",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2007 · Manga: 2004–present"
+},
+{
+"title": "Super Lovers",
+"author": "Miyuki Abe",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2016; 2017 · Manga: 2012–present"
+},
+{
+"title": "Sweet Blue Flowers",
+"author": "Takako Shimura",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2009 · Manga: 2004–2013"
+},
+{
+"title": "Switch Girl!!",
+"author": "Natsumi Aida",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2011 · Manga: 2008–2011"
+},
+{
+"title": "Tanaka-kun Is Always Listless",
+"author": "Torako",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2016 · Manga: 2013–present"
+},
+{
+"title": "Tegami Bachi",
+"author": "Hiroyuki Asada",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2009–2010 · Manga: 2006–2013"
+},
+{
+"title": "Tenjho Tenge",
+"author": "Oh! great",
+"status": "new",
+"total": 21,
+"ongoing": false,
+"note": "Anime: 2004 · Manga: 1999–2010"
+},
+{
+"title": "Terra Formars",
+"author": "Yu Sasuga/Kenichi Tachibana",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2014; 2016 · Manga: 2011–present"
+},
+{
+"title": "Toilet-bound Hanako-kun",
+"author": "AidaIro",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2020 · Manga: 2014–present"
+},
+{
+"title": "Tokyo Ghoul",
+"author": "Sui Ishida",
+"status": "new",
+"total": 14,
+"ongoing": false,
+"note": "Anime: 2014–2018 · Manga: 2011–2014"
+},
+{
+"title": "Tokyo Mew Mew",
+"author": "Mia Ikumi/Reiko Yoshida",
+"status": "new",
+"total": 7,
+"ongoing": false,
+"note": "Anime: 2002–2003 · Manga: 2000–2003"
+},
+{
+"title": "Tokyo Revengers",
+"author": "Ken Wakui",
+"status": "new",
+"total": 31,
+"ongoing": false,
+"note": "Anime: 2021–2023; 2024 · Manga: 2017–2022"
+},
+{
+"title": "Tomo-chan Is a Girl!",
+"author": "Fumita Yanagida",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2023 · Manga: 2015–2023 (web)"
+},
+{
+"title": "Tomodachi Game",
+"author": "Yuki Sato/Mikoto Yamaguchi",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2022 · Manga: 2013–present"
+},
+{
+"title": "Tonari no Kaibutsu-kun",
+"author": "Robico",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2012 · Manga: 2006–2014"
+},
+{
+"title": "Tonari no Seki-kun",
+"author": "Takuma Morishige",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2014 · Manga: 2013–present"
+},
+{
+"title": "Tonikawa",
+"author": "Kenjiro Hata",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2020–2023 · Manga: 2018–present"
+},
+{
+"title": "Toradora!",
+"author": "Yuyuko Takemiya (manga adapt)",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2008–2009 · Manga: 2007–2009"
+},
+{
+"title": "Toriko",
+"author": "Mitsutoshi Shimabukuro",
+"status": "new",
+"total": 43,
+"ongoing": false,
+"note": "Anime: 2011–2014 · Manga: 2008–2016"
+},
+{
+"title": "Trigun",
+"author": "Yasuhiro Nightow",
+"status": "new",
+"total": 3,
+"ongoing": false,
+"note": "Anime: 1998; 2023 · Manga: 1995–1997"
+},
+{
+"title": "Trigun Maximum",
+"author": "Yasuhiro Nightow",
+"status": "new",
+"total": 14,
+"ongoing": false,
+"note": "Anime: 2023 · Manga: 1997–2007"
+},
+{
+"title": "Trinity Seven",
+"author": "Kenji Saito/Akinari Nao",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2014 · Manga: 2012–present"
+},
+{
+"title": "Tsubasa: RESERVoir CHRoNiCLE",
+"author": "CLAMP",
+"status": "new",
+"total": 28,
+"ongoing": false,
+"note": "Anime: 2005–2007 · Manga: 2003–2009"
+},
+{
+"title": "Tsukuyomi: Moon Phase",
+"author": "Keitaro Arima",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2004 · Manga: 2003–2008"
+},
+{
+"title": "Tsuredure Children",
+"author": "Toru Hirayama",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2017 · Manga: 2014–2022"
+},
+{
+"title": "Twin Star Exorcists",
+"author": "Yoshiaki Sukeno",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2016–2017 · Manga: 2013–present"
+},
+{
+"title": "Undead Unluck",
+"author": "Yoshifumi Tozuka",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2023–2024 · Manga: 2020–2025"
+},
+{
+"title": "Urusei Yatsura",
+"author": "Rumiko Takahashi",
+"status": "new",
+"total": 34,
+"ongoing": false,
+"note": "Anime: 1981–1986; 2022–2024 · Manga: 1978–1987"
+},
+{
+"title": "Ushio and Tora",
+"author": "Kazuhiro Fujita",
+"status": "new",
+"total": 33,
+"ongoing": false,
+"note": "Anime: 2015–2016 · Manga: 1990–1996"
+},
+{
+"title": "Uzumaki",
+"author": "Junji Ito",
+"status": "new",
+"total": 3,
+"ongoing": false,
+"note": "Anime: 2024 · Manga: 1998–1999"
+},
+{
+"title": "Vampire Knight",
+"author": "Matsuri Hino",
+"status": "new",
+"total": 19,
+"ongoing": false,
+"note": "Anime: 2008; 2008 · Manga: 2004–2013"
+},
+{
+"title": "Vinland Saga",
+"author": "Makoto Yukimura",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2019–2023 · Manga: 2005–present"
+},
+{
+"title": "Wagnaria!!",
+"author": "Karino Takatsu",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2010–2015 · Manga: 2005–present"
+},
+{
+"title": "Wandering Son",
+"author": "Takako Shimura",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2011 · Manga: 2002–2013"
+},
+{
+"title": "Wangan Midnight",
+"author": "Michiharu Kusunoki",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2007–2008 · Manga: 1990–2008"
+},
+{
+"title": "Wanna Be the Strongest in the World!",
+"author": "Hajime Kataoka",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2019 · Manga: 2014–2022"
+},
+{
+"title": "Watamote",
+"author": "Nico Tanigawa",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2013 · Manga: 2011–present"
+},
+{
+"title": "We Never Learn",
+"author": "Taishi Tsutsui",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2019–2020 · Manga: 2017–2020"
+},
+{
+"title": "Wedding Peach",
+"author": "Nao Yazawa",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 1995–1996 · Manga: 1994–1996"
+},
+{
+"title": "Welcome to the NHK",
+"author": "Tatsuhiko Takimoto/Kendi Oiwa",
+"status": "new",
+"total": 8,
+"ongoing": false,
+"note": "Anime: 2006 · Manga: 2005–2007"
+},
+{
+"title": "When Supernatural Battles Became Commonplace",
+"author": "Kyouhei Kaneko",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2014 · Manga: 2014–2015"
+},
+{
+"title": "Wind Breaker",
+"author": "Satoru Nii",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2024– · Manga: 2013–present"
+},
+{
+"title": "Witch Craft Works",
+"author": "Ryu Mizunagareboshi",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2014 · Manga: 2010–2018"
+},
+{
+"title": "Witch Hat Atelier",
+"author": "Kamome Shirahama",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2025 · Manga: 2016–present"
+},
+{
+"title": "The World God Only Knows",
+"author": "Tamiki Wakaki",
+"status": "new",
+"total": 26,
+"ongoing": false,
+"note": "Anime: 2010–2013 · Manga: 2008–2014"
+},
+{
+"title": "World Trigger",
+"author": "Daisuke Ashihara",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2014–2016; 2021– · Manga: 2013–present"
+},
+{
+"title": "Wotakoi",
+"author": "Fujita",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2018 · Manga: 2014–2021"
+},
+{
+"title": "xxxHOLiC",
+"author": "CLAMP",
+"status": "new",
+"total": 19,
+"ongoing": false,
+"note": "Anime: 2006–2008 · Manga: 2003–2011"
+},
+{
+"title": "Yakitate!! Japan",
+"author": "Takashi Hashiguchi",
+"status": "new",
+"total": 26,
+"ongoing": false,
+"note": "Anime: 2004–2006 · Manga: 2001–2007"
+},
+{
+"title": "Yamada-kun and the Seven Witches",
+"author": "Miki Yoshikawa",
+"status": "new",
+"total": 28,
+"ongoing": false,
+"note": "Anime: 2015 · Manga: 2012–2017"
+},
+{
+"title": "Yamato Nadeshiko Shichi Henge",
+"author": "Tomoko Hayakawa",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2006 · Manga: 2001–2010"
+},
+{
+"title": "Yatogame-chan",
+"author": "Mai Nishikata",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2020 · Manga: 2014–present"
+},
+{
+"title": "Your Lie in April",
+"author": "Naoshi Arakawa",
+"status": "new",
+"total": 11,
+"ongoing": false,
+"note": "Anime: 2014–2015 · Manga: 2011–2015"
+},
+{
+"title": "Yowamushi Pedal",
+"author": "Wataru Watanabe",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2013–2022 · Manga: 2008–present"
+},
+{
+"title": "Yu-Gi-Oh!",
+"author": "Kazuki Takahashi",
+"status": "new",
+"total": 7,
+"ongoing": false,
+"note": "Anime: 1998; 2000–2004 · Manga: 1996–2004"
+},
+{
+"title": "Yumeiro Patissiere",
+"author": "Natsumi Matsumoto",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2009–2011 · Manga: 2009–2013"
+},
+{
+"title": "Yuuna and the Haunted Hot Springs",
+"author": "Tadahiro Miura",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2018 · Manga: 2016–2022"
+},
+{
+"title": "Zatch Bell!",
+"author": "Makoto Raiku",
+"status": "new",
+"total": 33,
+"ongoing": false,
+"note": "Anime: 2003–2006 · Manga: 2001–2007"
+},
+{
+"title": "Zetsuen no Tempest",
+"author": "Ren Saizaki (manga adapt)",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2012–2013 · Manga: 2010–2014"
+},
+{
+"title": "Zettai Karen Children",
+"author": "Takashi Shiina",
+"status": "new",
+"total": 0,
+"ongoing": true,
+"note": "Anime: 2008–2009 · Manga: 2005–present"
+},
+{
+"title": "Zipang",
+"author": "Kaiji Kawaguchi",
+"status": "new",
+"total": 43,
+"ongoing": false,
+"note": "Anime: 2004–2005 · Manga: 2000–2009"
+},
+{
+"title": "Zom 100",
+"author": "Haro Aso/Kotaro Takata",
+"status": "new",
+"total": 0,
+"ongoing": false,
+"note": "Anime: 2023 · Manga: 2018–2023"
 }
 ]
 }
