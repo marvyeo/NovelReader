@@ -1,0 +1,229 @@
+{
+ "format": "novelreader-manga",
+ "manga": [
+  {
+   "title": "Assassination Classroom",
+   "author": "Yusei Matsui",
+   "status": "new",
+   "total": 21,
+   "ongoing": false,
+   "note": "Anime: 2015–2016 · Manga: 2012–2016"
+  },
+  {
+   "title": "Black Clover",
+   "author": "Yuki Tabata",
+   "status": "new",
+   "total": 37,
+   "ongoing": true,
+   "note": "Anime: 2017–2021 · Manga: 2015–present"
+  },
+  {
+   "title": "Blue Exorcist",
+   "author": "Kazue Kato",
+   "status": "new",
+   "total": 30,
+   "ongoing": true,
+   "note": "Anime: 2011–2025 · Manga: 2009–present"
+  },
+  {
+   "title": "Blue Lock",
+   "author": "Muneyuki Kaneshiro/Yusuke Nomura",
+   "status": "new",
+   "total": 35,
+   "ongoing": true,
+   "note": "Anime: 2022–2024 · Manga: 2018–present"
+  },
+  {
+   "title": "Boruto: Naruto Next Generations",
+   "author": "Ukyo Kodachi/Mikio Ikemoto",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2017–2023 · Manga: 2016–present · Sequel to Naruto (tracked separately)"
+  },
+  {
+   "title": "Chainsaw Man",
+   "author": "Tatsuki Fujimoto",
+   "status": "new",
+   "total": 20,
+   "ongoing": true,
+   "note": "Anime: 2022 · Manga: 2018–present"
+  },
+  {
+   "title": "Claymore",
+   "author": "Norihiro Yagi",
+   "status": "new",
+   "total": 27,
+   "ongoing": false,
+   "note": "Anime: 2007 · Manga: 2001–2014"
+  },
+  {
+   "title": "Code:Breaker",
+   "author": "Akimine Kamijyo",
+   "status": "new",
+   "total": 0,
+   "ongoing": false,
+   "note": "Anime: 2012 · Manga: 2008–2013"
+  },
+  {
+   "title": "D.Gray-man",
+   "author": "Katsura Hoshino",
+   "status": "new",
+   "total": 27,
+   "ongoing": true,
+   "note": "Anime: 2006–2008; 2016 · Manga: 2004–present"
+  },
+  {
+   "title": "Dandadan",
+   "author": "Yukinobu Tatsu",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2024–2025 · Manga: 2021–present"
+  },
+  {
+   "title": "Demon Slayer: Kimetsu no Yaiba",
+   "author": "Koyoharu Gotouge",
+   "status": "new",
+   "total": 23,
+   "ongoing": false,
+   "note": "Anime: 2019- · Manga: 2016–2020"
+  },
+  {
+   "title": "Eden's Zero",
+   "author": "Hiro Mashima",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2021–2023 · Manga: 2018–present"
+  },
+  {
+   "title": "Fairy Tail: 100 Years Quest",
+   "author": "Hiro Mashima/Atsuo Ueda",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2024– · Manga: 2018–present · Sequel to Fairy Tail (tracked separately)"
+  },
+  {
+   "title": "Haikyu!!",
+   "author": "Haruichi Furudate",
+   "status": "new",
+   "total": 45,
+   "ongoing": false,
+   "note": "Anime: 2014–2020 · Manga: 2012–2020"
+  },
+  {
+   "title": "Jujutsu Kaisen",
+   "author": "Gege Akutami",
+   "status": "new",
+   "total": 30,
+   "ongoing": false,
+   "note": "Anime: 2020- · Manga: 2018–2024"
+  },
+  {
+   "title": "Magi: The Labyrinth of Magic",
+   "author": "Shinobu Ohtaka",
+   "status": "new",
+   "total": 37,
+   "ongoing": false,
+   "note": "Anime: 2012–2014 · Manga: 2009–2017"
+  },
+  {
+   "title": "Mashle",
+   "author": "Hajime Komoto",
+   "status": "new",
+   "total": 0,
+   "ongoing": false,
+   "note": "Anime: 2023–2024 · Manga: 2020–2023"
+  },
+  {
+   "title": "Medaka Box",
+   "author": "Nisio Isin/Akira Akatsuki",
+   "status": "new",
+   "total": 22,
+   "ongoing": false,
+   "note": "Anime: 2012 · Manga: 2009–2013"
+  },
+  {
+   "title": "Mission: Yozakura Family",
+   "author": "Hitsuji Gondaira",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2024 · Manga: 2017–present"
+  },
+  {
+   "title": "Psyren",
+   "author": "Toshiaki Iwashiro",
+   "status": "new",
+   "total": 16,
+   "ongoing": false,
+   "note": "Anime: 2012 (?) · Manga: 2007–2010"
+  },
+  {
+   "title": "Sakamoto Days",
+   "author": "Yuto Suzuki",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2025- · Manga: 2020–present"
+  },
+  {
+   "title": "Sekirei",
+   "author": "Sakurako Gokurakuin",
+   "status": "new",
+   "total": 0,
+   "ongoing": false,
+   "note": "Anime: 2008; 2010 · Manga: 2005–2018"
+  },
+  {
+   "title": "Spy x Family",
+   "author": "Tatsuya Endo",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2022– · Manga: 2019–present"
+  },
+  {
+   "title": "Tokyo Revengers",
+   "author": "Ken Wakui",
+   "status": "new",
+   "total": 31,
+   "ongoing": false,
+   "note": "Anime: 2021–2023; 2024 · Manga: 2017–2022"
+  },
+  {
+   "title": "Tonikawa",
+   "author": "Kenjiro Hata",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2020–2023 · Manga: 2018–present"
+  },
+  {
+   "title": "Twin Star Exorcists",
+   "author": "Yoshiaki Sukeno",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2016–2017 · Manga: 2013–present"
+  },
+  {
+   "title": "World Trigger",
+   "author": "Daisuke Ashihara",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2014–2016; 2021– · Manga: 2013–present"
+  },
+  {
+   "title": "Yowamushi Pedal",
+   "author": "Wataru Watanabe",
+   "status": "new",
+   "total": 0,
+   "ongoing": true,
+   "note": "Anime: 2013–2022 · Manga: 2008–present"
+  }
+ ]
+}
