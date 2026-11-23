@@ -7,7 +7,8 @@
    "status": "new",
    "total": 21,
    "ongoing": false,
-   "note": "Anime: 2015–2016 · Manga: 2012–2016"
+   "note": "Anime: 2015–2016 · Manga: 2012–2016",
+   "stopAt": "Nothing to catch up on: anime covers the whole story. Optional: read vol 1+ for differences."
   },
   {
    "title": "Black Clover",
@@ -15,7 +16,8 @@
    "status": "new",
    "total": 37,
    "ongoing": true,
-   "note": "Anime: 2017–2021 · Manga: 2015–present"
+   "note": "Anime: 2017–2021 · Manga: 2015–present",
+   "stopAt": "~vol 26, Spade Kingdom arc (anime ended 2021) [low confidence, verify]"
   },
   {
    "title": "Blue Exorcist",
@@ -23,7 +25,8 @@
    "status": "new",
    "total": 30,
    "ongoing": true,
-   "note": "Anime: 2011–2025 · Manga: 2009–present"
+   "note": "Anime: 2011–2025 · Manga: 2009–present",
+   "stopAt": "~vol 18, after Shimane Illuminati Saga [low confidence, verify]"
   },
   {
    "title": "Blue Lock",
@@ -31,7 +34,8 @@
    "status": "new",
    "total": 35,
    "ongoing": true,
-   "note": "Anime: 2022–2024 · Manga: 2018–present"
+   "note": "Anime: 2022–2024 · Manga: 2018–present",
+   "stopAt": "~vol 15, around the end of the U-20 Japan match [low confidence, verify]"
   },
   {
    "title": "Boruto: Naruto Next Generations",
@@ -39,7 +43,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2017–2023 · Manga: 2016–present · Sequel to Naruto (tracked separately)"
+   "note": "Anime: 2017–2023 · Manga: 2016–present · Sequel to Naruto (tracked separately)",
+   "stopAt": "~vol 11, before Part 1 final stretch (anime was heavy on filler) [low confidence, verify]"
   },
   {
    "title": "Chainsaw Man",
@@ -47,7 +52,8 @@
    "status": "new",
    "total": 20,
    "ongoing": true,
-   "note": "Anime: 2022 · Manga: 2018–present"
+   "note": "Anime: 2022 · Manga: 2018–present",
+   "stopAt": "vol 7, ch 53 (anime S1 + the Reze film cover vol 1-6) [med-high confidence, verify]"
   },
   {
    "title": "Claymore",
@@ -55,7 +61,8 @@
    "status": "new",
    "total": 27,
    "ongoing": false,
-   "note": "Anime: 2007 · Manga: 2001–2014"
+   "note": "Anime: 2007 · Manga: 2001–2014",
+   "stopAt": "vol 6 (anime ending diverges there) [medium confidence, verify]"
   },
   {
    "title": "Code:Breaker",
@@ -63,7 +70,8 @@
    "status": "new",
    "total": 0,
    "ongoing": false,
-   "note": "Anime: 2012 · Manga: 2008–2013"
+   "note": "Anime: 2012 · Manga: 2008–2013",
+   "stopAt": "~vol 7 (2012 anime was 13 eps) [low confidence, verify]"
   },
   {
    "title": "D.Gray-man",
@@ -71,7 +79,8 @@
    "status": "new",
    "total": 27,
    "ongoing": true,
-   "note": "Anime: 2006–2008; 2016 · Manga: 2004–present"
+   "note": "Anime: 2006–2008; 2016 · Manga: 2004–present",
+   "stopAt": "~vol 17 (Hallow anime 2016 is the furthest) [low confidence, verify]"
   },
   {
    "title": "Dandadan",
@@ -79,7 +88,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2024–2025 · Manga: 2021–present"
+   "note": "Anime: 2024–2025 · Manga: 2021–present",
+   "stopAt": "~vol 10, after the Evil Eye / Serpo run in S2 [low confidence, verify]"
   },
   {
    "title": "Demon Slayer: Kimetsu no Yaiba",
@@ -87,7 +97,8 @@
    "status": "new",
    "total": 23,
    "ongoing": false,
-   "note": "Anime: 2019- · Manga: 2016–2020"
+   "note": "Anime: 2019- · Manga: 2016–2020",
+   "stopAt": "vol 16-17, start of Infinity Castle arc; check where the film run ended [low-med confidence, verify]"
   },
   {
    "title": "Eden's Zero",
@@ -95,7 +106,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2021–2023 · Manga: 2018–present"
+   "note": "Anime: 2021–2023 · Manga: 2018–present",
+   "stopAt": "~vol 18 [low confidence, verify]"
   },
   {
    "title": "Fairy Tail: 100 Years Quest",
@@ -103,7 +115,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2024– · Manga: 2018–present · Sequel to Fairy Tail (tracked separately)"
+   "note": "Anime: 2024– · Manga: 2018–present · Sequel to Fairy Tail (tracked separately)",
+   "stopAt": "~vol 6 [low confidence, verify]"
   },
   {
    "title": "Haikyu!!",
@@ -111,7 +124,8 @@
    "status": "new",
    "total": 45,
    "ongoing": false,
-   "note": "Anime: 2014–2020 · Manga: 2012–2020"
+   "note": "Anime: 2014–2020 · Manga: 2012–2020",
+   "stopAt": "~vol 38 (final films cover the Nekoma match); about 7 vols left [low-med confidence, verify]"
   },
   {
    "title": "Jujutsu Kaisen",
@@ -119,7 +133,8 @@
    "status": "new",
    "total": 30,
    "ongoing": false,
-   "note": "Anime: 2020- · Manga: 2018–2024"
+   "note": "Anime: 2020- · Manga: 2018–2024",
+   "stopAt": "vol 17, Culling Game arc (S2 ends at Shibuya); S3 may have covered more [med confidence, verify]"
   },
   {
    "title": "Magi: The Labyrinth of Magic",
@@ -127,7 +142,8 @@
    "status": "new",
    "total": 37,
    "ongoing": false,
-   "note": "Anime: 2012–2014 · Manga: 2009–2017"
+   "note": "Anime: 2012–2014 · Manga: 2009–2017",
+   "stopAt": "~vol 20 [low confidence, verify]"
   },
   {
    "title": "Mashle",
@@ -135,7 +151,8 @@
    "status": "new",
    "total": 0,
    "ongoing": false,
-   "note": "Anime: 2023–2024 · Manga: 2020–2023"
+   "note": "Anime: 2023–2024 · Manga: 2020–2023",
+   "stopAt": "~vol 10 [low confidence, verify]"
   },
   {
    "title": "Medaka Box",
@@ -143,7 +160,8 @@
    "status": "new",
    "total": 22,
    "ongoing": false,
-   "note": "Anime: 2012 · Manga: 2009–2013"
+   "note": "Anime: 2012 · Manga: 2009–2013",
+   "stopAt": "~vol 8 [low confidence, verify]"
   },
   {
    "title": "Mission: Yozakura Family",
@@ -151,7 +169,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2024 · Manga: 2017–present"
+   "note": "Anime: 2024 · Manga: 2017–present",
+   "stopAt": "~vol 9 [low confidence, verify]"
   },
   {
    "title": "Psyren",
@@ -159,7 +178,8 @@
    "status": "new",
    "total": 16,
    "ongoing": false,
-   "note": "Anime: 2012 (?) · Manga: 2007–2010"
+   "note": "Anime: 2012 (?) · Manga: 2007–2010",
+   "stopAt": "~vol 6 (OVA only) [low confidence, verify]"
   },
   {
    "title": "Sakamoto Days",
@@ -167,7 +187,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2025- · Manga: 2020–present"
+   "note": "Anime: 2025- · Manga: 2020–present",
+   "stopAt": "~vol 9 [low confidence, verify]"
   },
   {
    "title": "Sekirei",
@@ -175,7 +196,8 @@
    "status": "new",
    "total": 0,
    "ongoing": false,
-   "note": "Anime: 2008; 2010 · Manga: 2005–2018"
+   "note": "Anime: 2008; 2010 · Manga: 2005–2018",
+   "stopAt": "~vol 8 [low confidence, verify]"
   },
   {
    "title": "Spy x Family",
@@ -183,7 +205,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2022– · Manga: 2019–present"
+   "note": "Anime: 2022– · Manga: 2019–present",
+   "stopAt": "~vol 10 [low-med confidence, verify]"
   },
   {
    "title": "Tokyo Revengers",
@@ -191,7 +214,8 @@
    "status": "new",
    "total": 31,
    "ongoing": false,
-   "note": "Anime: 2021–2023; 2024 · Manga: 2017–2022"
+   "note": "Anime: 2021–2023; 2024 · Manga: 2017–2022",
+   "stopAt": "~vol 21, start of the final arc [low-med confidence, verify]"
   },
   {
    "title": "Tonikawa",
@@ -199,7 +223,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2020–2023 · Manga: 2018–present"
+   "note": "Anime: 2020–2023 · Manga: 2018–present",
+   "stopAt": "~vol 11 [low confidence, verify]"
   },
   {
    "title": "Twin Star Exorcists",
@@ -207,7 +232,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2016–2017 · Manga: 2013–present"
+   "note": "Anime: 2016–2017 · Manga: 2013–present",
+   "stopAt": "~vol 12 (anime ending is original) [low-med confidence, verify]"
   },
   {
    "title": "World Trigger",
@@ -215,7 +241,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2014–2016; 2021– · Manga: 2013–present"
+   "note": "Anime: 2014–2016; 2021– · Manga: 2013–present",
+   "stopAt": "~vol 18 [low confidence, verify]"
   },
   {
    "title": "Yowamushi Pedal",
@@ -223,7 +250,8 @@
    "status": "new",
    "total": 0,
    "ongoing": true,
-   "note": "Anime: 2013–2022 · Manga: 2008–present"
+   "note": "Anime: 2013–2022 · Manga: 2008–present",
+   "stopAt": "~vol 60+ [low confidence, verify]"
   }
  ]
 }
