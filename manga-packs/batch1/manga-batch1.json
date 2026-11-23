@@ -8,16 +8,16 @@
    "total": 21,
    "ongoing": false,
    "note": "Anime: 2015–2016 · Manga: 2012–2016",
-   "stopAt": "Nothing to catch up on: anime covers the whole story. Optional: read vol 1+ for differences."
+   "stopAt": "Caught up: the anime covers the whole story. Optional: read vol 1+ for differences. [researched Nov 2026]"
   },
   {
    "title": "Black Clover",
    "author": "Yuki Tabata",
    "status": "new",
    "total": 37,
-   "ongoing": true,
+   "ongoing": false,
    "note": "Anime: 2017–2021 · Manga: 2015–present",
-   "stopAt": "~vol 26, Spade Kingdom arc (anime ended 2021) [low confidence, verify]"
+   "stopAt": "Ch 270, page 14 (vol 27, ch 262-272). Anime ended at ch 270 p13. Manga finished at ch 392 (2026). [researched Nov 2026]"
   },
   {
    "title": "Blue Exorcist",
@@ -26,7 +26,7 @@
    "total": 30,
    "ongoing": true,
    "note": "Anime: 2011–2025 · Manga: 2009–present",
-   "stopAt": "~vol 18, after Shimane Illuminati Saga [low confidence, verify]"
+   "stopAt": "Vol 22, ch 100. Anime (incl. Beyond the Snow Saga) ends at ch 99. [researched Nov 2026]"
   },
   {
    "title": "Blue Lock",
@@ -35,7 +35,7 @@
    "total": 35,
    "ongoing": true,
    "note": "Anime: 2022–2024 · Manga: 2018–present",
-   "stopAt": "~vol 15, around the end of the U-20 Japan match [low confidence, verify]"
+   "stopAt": "Ch 150 (vol 18). S2 ends around ch 149-151; sources differ by a chapter. [researched Nov 2026]"
   },
   {
    "title": "Boruto: Naruto Next Generations",
@@ -44,16 +44,16 @@
    "total": 0,
    "ongoing": true,
    "note": "Anime: 2017–2023 · Manga: 2016–present · Sequel to Naruto (tracked separately)",
-   "stopAt": "~vol 11, before Part 1 final stretch (anime was heavy on filler) [low confidence, verify]"
+   "stopAt": "Ch 68 (anime ep 293 reaches mid ch 68). Part 1 manga ends ch 81; sequel Two Blue Vortex restarts at ch 1. [researched Nov 2026]"
   },
   {
    "title": "Chainsaw Man",
    "author": "Tatsuki Fujimoto",
    "status": "new",
    "total": 20,
-   "ongoing": true,
+   "ongoing": false,
    "note": "Anime: 2022 · Manga: 2018–present",
-   "stopAt": "vol 7, ch 53 (anime S1 + the Reze film cover vol 1-6) [med-high confidence, verify]"
+   "stopAt": "Ch 53 (vol 7). Anime S1 + Reze Arc film cover ch 1-52. Manga finished at ch 232 (Mar 2026). [researched Nov 2026]"
   },
   {
    "title": "Claymore",
@@ -62,16 +62,16 @@
    "total": 27,
    "ongoing": false,
    "note": "Anime: 2007 · Manga: 2001–2014",
-   "stopAt": "vol 6 (anime ending diverges there) [medium confidence, verify]"
+   "stopAt": "Ch 50, start of the Northern Campaign. Anime ep ~18 to 23 diverge; sources say ch 49-59. Manga is 155 ch, finished. [researched Nov 2026]"
   },
   {
    "title": "Code:Breaker",
    "author": "Akimine Kamijyo",
    "status": "new",
-   "total": 0,
+   "total": 26,
    "ongoing": false,
    "note": "Anime: 2012 · Manga: 2008–2013",
-   "stopAt": "~vol 7 (2012 anime was 13 eps) [low confidence, verify]"
+   "stopAt": "Ch 34 (start of vol 7). One source only, anime is loose. Manga finished, 230 ch. [researched Nov 2026]"
   },
   {
    "title": "D.Gray-man",
@@ -80,7 +80,7 @@
    "total": 27,
    "ongoing": true,
    "note": "Anime: 2006–2008; 2016 · Manga: 2004–present",
-   "stopAt": "~vol 17 (Hallow anime 2016 is the furthest) [low confidence, verify]"
+   "stopAt": "Ch 206 (vol 23). Hallow adapts through about ch 205; sources say 206-207. [researched Nov 2026]"
   },
   {
    "title": "Dandadan",
@@ -89,7 +89,7 @@
    "total": 0,
    "ongoing": true,
    "note": "Anime: 2024–2025 · Manga: 2021–present",
-   "stopAt": "~vol 10, after the Evil Eye / Serpo run in S2 [low confidence, verify]"
+   "stopAt": "Ch 72 (vol 9). Anime S2 ends at ch 71. [researched Nov 2026]"
   },
   {
    "title": "Demon Slayer: Kimetsu no Yaiba",
@@ -98,16 +98,16 @@
    "total": 23,
    "ongoing": false,
    "note": "Anime: 2019- · Manga: 2016–2020",
-   "stopAt": "vol 16-17, start of Infinity Castle arc; check where the film run ended [low-med confidence, verify]"
+   "stopAt": "Ch 157 (vol 18). Infinity Castle film 1 ends mid ch 157. If you saw more films, move on. Manga finished at ch 205. [researched Nov 2026]"
   },
   {
    "title": "Eden's Zero",
    "author": "Hiro Mashima",
    "status": "new",
    "total": 0,
-   "ongoing": true,
+   "ongoing": false,
    "note": "Anime: 2021–2023 · Manga: 2018–present",
-   "stopAt": "~vol 18 [low confidence, verify]"
+   "stopAt": "Ch 141 (vol 17). Anime S2 ends at ch 140. Manga finished at ch 293. [researched Nov 2026]"
   },
   {
    "title": "Fairy Tail: 100 Years Quest",
@@ -116,7 +116,7 @@
    "total": 0,
    "ongoing": true,
    "note": "Anime: 2024– · Manga: 2018–present · Sequel to Fairy Tail (tracked separately)",
-   "stopAt": "~vol 6 [low confidence, verify]"
+   "stopAt": "Ch 92 (vol 11). Single fan guide, treat as unconfirmed. Manga ongoing. [researched Nov 2026]"
   },
   {
    "title": "Haikyu!!",
@@ -125,7 +125,7 @@
    "total": 45,
    "ongoing": false,
    "note": "Anime: 2014–2020 · Manga: 2012–2020",
-   "stopAt": "~vol 38 (final films cover the Nekoma match); about 7 vols left [low-med confidence, verify]"
+   "stopAt": "Ch 294. TV anime ends at ch 293; two final films cover the rest to ch 402 (vol 45). If you saw both films you are caught up. [researched Nov 2026]"
   },
   {
    "title": "Jujutsu Kaisen",
@@ -134,7 +134,7 @@
    "total": 30,
    "ongoing": false,
    "note": "Anime: 2020- · Manga: 2018–2024",
-   "stopAt": "vol 17, Culling Game arc (S2 ends at Shibuya); S3 may have covered more [med confidence, verify]"
+   "stopAt": "Ch 181 (Tokyo No. 2 Colony). Anime S3 (Culling Game Part 1) ends at the start of ch 181. Manga finished; Culling Game runs to ch 221. [researched Nov 2026]"
   },
   {
    "title": "Magi: The Labyrinth of Magic",
@@ -143,16 +143,16 @@
    "total": 37,
    "ongoing": false,
    "note": "Anime: 2012–2014 · Manga: 2009–2017",
-   "stopAt": "~vol 20 [low confidence, verify]"
+   "stopAt": "Ch 199 (vol 20). Anime ends at ch 198. Manga finished, 369 ch / 37 vols. [researched Nov 2026]"
   },
   {
    "title": "Mashle",
    "author": "Hajime Komoto",
    "status": "new",
-   "total": 0,
+   "total": 18,
    "ongoing": false,
    "note": "Anime: 2023–2024 · Manga: 2020–2023",
-   "stopAt": "~vol 10 [low confidence, verify]"
+   "stopAt": "Ch 75 (vol 9). Anime S2 ends at ch 74. Manga finished at ch 162. [researched Nov 2026]"
   },
   {
    "title": "Medaka Box",
@@ -161,16 +161,16 @@
    "total": 22,
    "ongoing": false,
    "note": "Anime: 2012 · Manga: 2009–2013",
-   "stopAt": "~vol 8 [low confidence, verify]"
+   "stopAt": "Ch 56. Anime ends at ch 55 (before Kumagawa). Manga finished, 194 ch / 22 vols. [researched Nov 2026]"
   },
   {
    "title": "Mission: Yozakura Family",
    "author": "Hitsuji Gondaira",
    "status": "new",
-   "total": 0,
-   "ongoing": true,
+   "total": 29,
+   "ongoing": false,
    "note": "Anime: 2024 · Manga: 2017–present",
-   "stopAt": "~vol 9 [low confidence, verify]"
+   "stopAt": "Ch 86 (vol 10). Anime S1 ends at ch 85. Manga finished at ch 258 / 29 vols. [researched Nov 2026]"
   },
   {
    "title": "Psyren",
@@ -179,7 +179,7 @@
    "total": 16,
    "ongoing": false,
    "note": "Anime: 2012 (?) · Manga: 2007–2010",
-   "stopAt": "~vol 6 (OVA only) [low confidence, verify]"
+   "stopAt": "No anime to catch up on: the TV anime premieres Oct 2026 and covers the whole story. Read from ch 1 or wait. Manga finished, 16 vols. [researched Nov 2026]"
   },
   {
    "title": "Sakamoto Days",
@@ -188,7 +188,7 @@
    "total": 0,
    "ongoing": true,
    "note": "Anime: 2025- · Manga: 2020–present",
-   "stopAt": "~vol 9 [low confidence, verify]"
+   "stopAt": "Ch 76 (vol 9). Anime S1 (2 parts) ends at ch 75. Manga near its end. [researched Nov 2026]"
   },
   {
    "title": "Sekirei",
@@ -197,7 +197,7 @@
    "total": 0,
    "ongoing": false,
    "note": "Anime: 2008; 2010 · Manga: 2005–2018",
-   "stopAt": "~vol 8 [low confidence, verify]"
+   "stopAt": "Ch 48, safest. Anime S2 has an original ending, loosely covers up to ch 74; ch 70 if you want to skip what S2 roughly showed. [researched Nov 2026]"
   },
   {
    "title": "Spy x Family",
@@ -206,7 +206,7 @@
    "total": 0,
    "ongoing": true,
    "note": "Anime: 2022– · Manga: 2019–present",
-   "stopAt": "~vol 10 [low-med confidence, verify]"
+   "stopAt": "Ch 60 (vol 9) if you only saw S1-S2. S3 (ended Dec 2025) reportedly reaches about ch 81, unconfirmed: check before skipping. [researched Nov 2026]"
   },
   {
    "title": "Tokyo Revengers",
@@ -215,7 +215,7 @@
    "total": 31,
    "ongoing": false,
    "note": "Anime: 2021–2023; 2024 · Manga: 2017–2022",
-   "stopAt": "~vol 21, start of the final arc [low-med confidence, verify]"
+   "stopAt": "Ch 186 (Bonten arc). Anime S3 ends at ch 185. Manga finished at ch 278. [researched Nov 2026]"
   },
   {
    "title": "Tonikawa",
@@ -224,16 +224,16 @@
    "total": 0,
    "ongoing": true,
    "note": "Anime: 2020–2023 · Manga: 2018–present",
-   "stopAt": "~vol 11 [low confidence, verify]"
+   "stopAt": "Ch 90, safest (one source says S2 ends at ch 107, another ch 90). Manga title: Tonikaku Kawaii. [researched Nov 2026]"
   },
   {
    "title": "Twin Star Exorcists",
    "author": "Yoshiaki Sukeno",
    "status": "new",
-   "total": 0,
-   "ongoing": true,
+   "total": 35,
+   "ongoing": false,
    "note": "Anime: 2016–2017 · Manga: 2013–present",
-   "stopAt": "~vol 12 (anime ending is original) [low-med confidence, verify]"
+   "stopAt": "Ch 15 (vol 5). Anime goes original from there. Manga finished, 134 ch / 35 vols. [researched Nov 2026]"
   },
   {
    "title": "World Trigger",
@@ -242,7 +242,7 @@
    "total": 0,
    "ongoing": true,
    "note": "Anime: 2014–2016; 2021– · Manga: 2013–present",
-   "stopAt": "~vol 18 [low confidence, verify]"
+   "stopAt": "Ch 197 (vol 23). Anime S3 ends at ch 196. Check for a newer season. [researched Nov 2026]"
   },
   {
    "title": "Yowamushi Pedal",
@@ -251,7 +251,16 @@
    "total": 0,
    "ongoing": true,
    "note": "Anime: 2013–2022 · Manga: 2008–present",
-   "stopAt": "~vol 60+ [low confidence, verify]"
+   "stopAt": "Ch 659. Most sources say Limit Break ends at ch 658; one says ch 544. Manga ongoing. [researched Nov 2026]"
+  },
+  {
+   "title": "A Certain Scientific Railgun",
+   "author": "Kazuma Kamachi/Motoi Fuyukawa",
+   "status": "new",
+   "total": 20,
+   "ongoing": false,
+   "stopAt": "Ch 98, start of the Jailbreaker arc. Anime S3 (Railgun T) ends with the Dream Ranker arc (ch 71-97, ends vol 13); exact last chapter unconfirmed. Manga finished at ch 170 (Mar 2026). [researched Nov 2026]",
+   "note": "Anime: 2009–2020 · Manga: 2007–2026 · Spin-off of Index. Tracked as manga at Marvin's choice."
   }
  ]
 }
